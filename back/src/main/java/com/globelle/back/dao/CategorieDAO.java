@@ -1,4 +1,9 @@
 package com.globelle.back.dao;
 
-public class CategorieDAO {
+import com.globelle.back.model.Categorie;
+import org.springframework.data.repository.CrudRepository;
+
+public interface CategorieDAO extends CrudRepository<Categorie, Integer> {
+
+
 }
