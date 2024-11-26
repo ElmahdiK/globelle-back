@@ -12,7 +12,7 @@
 	<artifactId>back</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>back</name>
-	<description>Backend for GloBelle project</description>
+	<description>Backend for GloBelle</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>17</java.version>
+		<java.version>23</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
