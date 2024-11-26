@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 @Entity
 @Data
-public class Categorie implements Serializable {
+public class Categories implements Serializable {
 
 
     @Id
@@ -27,7 +27,7 @@ public class Categorie implements Serializable {
 
     @Override
     public String toString() {
-        return "Categorie{" +
+        return "Categories{" +
                 "nom='" + nom + '\'' +
                 '}';
     }

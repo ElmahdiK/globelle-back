@@ -1,9 +1,7 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.Avis;
-import com.globelle.back.model.Categorie;
-import com.globelle.back.service.AvisService;
-import com.globelle.back.service.CategorieService;
+import com.globelle.back.model.Categories;
+import com.globelle.back.service.CategoriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/avis")
+@RequestMapping("/categories")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class AvisController {
+public class CategoriesController {
     @Autowired
-    private AvisService avisService;
+    private CategoriesService categoriesService;
 
     @GetMapping("")
-    public List<Avis> getAllAvis() {
-        return avisService.getAllAvis();
+    public List<Categories> getAllCategories() {
+        return categoriesService.getAllCategories();
     }
 }

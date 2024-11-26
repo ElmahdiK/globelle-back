@@ -1,4 +1,4 @@
 package com.globelle.back.controller;
 
-public class ServicesController {
+public class ClientController {
 }

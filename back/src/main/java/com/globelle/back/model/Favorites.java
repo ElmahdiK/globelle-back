@@ -1,4 +1,4 @@
 package com.globelle.back.model;
 
-public class Favoris {
+public class Favorites {
 }
