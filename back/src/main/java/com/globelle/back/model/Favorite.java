@@ -7,7 +7,8 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @SuperBuilder
 @Data
-public class Favorites {
+public class Favorite {
 
-
+    public Favorite() {
+    }
 }

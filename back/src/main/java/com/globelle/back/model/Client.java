@@ -19,17 +19,15 @@ import java.util.UUID;
 public class Client extends User  implements Serializable {
 
     @OneToMany
-    private List<Reservation> reservations = new ArrayList<>();
-
-//    @OneToMany
-//    private List<Favorites> favorites = new ArrayList<>();
-
+    private List<Favorite> favoritesList = new ArrayList<>();
 
     public Client(UUID id, String name, String surname, String email,
                   String password, String postalCode, String city,
-                  String address, String telephone, Date createdAt,
-                  Date updatedAt, boolean blacklisted, byte[] profilePhoto) {
-        super(id, name, surname, email, password, postalCode, city,
-                address, telephone, createdAt, updatedAt, blacklisted, profilePhoto);
+                  String address, String telephone) {
+        super(id, name, surname, email, password, postalCode, city, address,
+                telephone);
+    }
+
+    public Client() {
     }
 }

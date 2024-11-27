@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @MappedSuperclass
@@ -14,7 +16,6 @@ abstract class User  implements Serializable {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Getter
-    @Setter
     private UUID id;
 
     @Column(nullable = false)
@@ -59,7 +60,6 @@ abstract class User  implements Serializable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Getter
-    @Setter
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -77,10 +77,12 @@ abstract class User  implements Serializable {
     @Setter
     private byte[] profilePhoto;
 
+    @OneToMany
+    private List<Reservation> reservationsList = new ArrayList<>();
+
     public User(UUID id, String name, String surname, String email,
                 String password, String postalCode, String city,
-                String address, String telephone, Date createdAt,
-                Date updatedAt, boolean blacklisted, byte[] profilePhoto) {
+                String address, String telephone) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -90,10 +92,7 @@ abstract class User  implements Serializable {
         this.city = city;
         this.address = address;
         this.telephone = telephone;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.blacklisted = blacklisted;
-        this.profilePhoto = profilePhoto;
+        this.createdAt = new Date();
     }
 
     public User() {
