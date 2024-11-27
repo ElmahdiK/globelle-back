@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@SuperBuilder
+//@SuperBuilder
 @Data
 public class Client extends User  implements Serializable {
 

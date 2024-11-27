@@ -1,6 +1,6 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.service.FavoritesService;
+import com.globelle.back.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,18 +12,18 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/favorites")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class FavoritesController {
+public class FavoriteController {
     @Autowired
-    private FavoritesService favoritesService;
+    private FavoriteService favoriteService;
 
     @GetMapping("")
-    public List<Favorites> getAllFavorites() {
-        return favoritesService.getAllFavorites();
+    public List<Favorite> getAllFavorite() {
+        return favoritesService.getAllFavorite();
     }
 
     @GetMapping("/{id}")
-    public Favorites getFavoriteById(@PathVariable int id) throws ResponseStatusException {
-        Optional<Favorites> f = favoritesService.getFavorite(id);
+    public Favorite getFavoriteById(@PathVariable int id) throws ResponseStatusException {
+        Optional<Favorite> f = favoritesService.getFavorite(id);
         if(f.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }

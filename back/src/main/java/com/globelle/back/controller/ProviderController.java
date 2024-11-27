@@ -1,7 +1,7 @@
 package com.globelle.back.controller;
 
 import com.globelle.back.model.Provider;
-import com.globelle.back.service.BeautyServicesService;
+import com.globelle.back.service.BeautyServiceService;
 import com.globelle.back.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -19,7 +19,7 @@ public class ProviderController {
     private ProviderService providerService;
 
     @Autowired
-    private BeautyServicesService beautyServicesService;
+    private BeautyServiceService beautyServiceService;
 
     @GetMapping("")
     public List<Provider> getAllProviders(){

@@ -1,6 +1,6 @@
 package com.globelle.back.service;
 
-import com.globelle.back.dao.BeautyServicesDAO;
+import com.globelle.back.dao.BeautyServiceDAO;
 import com.globelle.back.model.BeautyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,17 +9,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BeautyServicesService {
+public class BeautyServiceService {
 
     @Autowired
-    private BeautyServicesDAO beautyServicesDAO;
+    private BeautyServiceDAO beautyServiceDAO;
 
     public List<BeautyService> getAllBeautyServices(){
-        return (List<BeautyService>) beautyServicesDAO.findAll();
+        return (List<BeautyService>) beautyServiceDAO.findAll();
     }
 
     public Optional<BeautyService> getBeautyService(int id) {
-        return beautyServicesDAO.findById(id);
+        return beautyServiceDAO.findById(id);
     }
 
     /*
