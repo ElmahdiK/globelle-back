@@ -1,6 +1,8 @@
 package com.globelle.back.controller;
 
+import com.globelle.back.model.BeautyServices;
 import com.globelle.back.model.Provider;
+import com.globelle.back.service.BeautyServicesService;
 import com.globelle.back.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +19,9 @@ public class ProviderController {
     @Autowired
     private ProviderService providerService;
 
+    @Autowired
+    private BeautyServicesService beautyServicesService;
+
     @GetMapping("")
     public List<Provider> getAllProviders(){
         return providerService.getAllProviders();
@@ -30,4 +35,16 @@ public class ProviderController {
         }
         return p.get();
     }
+
+    /*
+    @GetMapping("/{id}/services")
+    public Provider getBeautyServicesFromProvider(@PathVariable int idProvider) throws ResponseStatusException {
+
+        Optional<BeautyServices> b = beautyServicesService.getAllBeautyServices(idProvider);
+        if(b.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
+        }
+        return b.get();
+    }
+    */
 }

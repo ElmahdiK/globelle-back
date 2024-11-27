@@ -21,4 +21,9 @@ public class ProviderService {
     public Optional<Provider> getProvider(int id) {
         return providerDAO.findById(id);
     }
+
+    public Optional<Provider> getBeautyServicesFromProvider(int id) {
+        return providerDAO.findById(id);
+    }
+
 }

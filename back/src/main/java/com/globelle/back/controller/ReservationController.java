@@ -18,14 +18,14 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @GetMapping("")
-    public List<Reservation> getAllReservations(){
+    public List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
     }
 
     @GetMapping("/{id}")
     public Reservation getReservationById(@PathVariable int id) throws ResponseStatusException {
         Optional<Reservation> r = reservationService.getReservation(id);
-        if(r.isEmpty()) {
+        if (r.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }
         return r.get();

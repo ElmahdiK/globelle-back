@@ -21,4 +21,10 @@ public class BeautyServicesService {
     public Optional<BeautyServices> getBeautyService(int id) {
         return beautyServicesDAO.findById(id);
     }
+
+    /*
+    public List<BeautyServices> getAllBeautyServices(int idProvider){
+        return beautyServicesDAO.findById(id);
+    }*/
+
 }
