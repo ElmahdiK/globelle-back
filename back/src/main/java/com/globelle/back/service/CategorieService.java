@@ -1,6 +1,7 @@
 package com.globelle.back.service;
 
 import com.globelle.back.dao.CategorieDAO;
+import com.globelle.back.model.Categorie;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

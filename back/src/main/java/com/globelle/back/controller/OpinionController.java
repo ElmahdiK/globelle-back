@@ -19,7 +19,7 @@ public class OpinionController {
 
     @GetMapping("")
     public List<Opinion> getAllOpinions() {
-        return opinionService.getAllOpinion();
+        return opinionService.getAllOpinions();
     }
 
     @GetMapping("/{id}")

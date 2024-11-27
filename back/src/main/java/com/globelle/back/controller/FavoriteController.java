@@ -1,5 +1,6 @@
 package com.globelle.back.controller;
 
+import com.globelle.back.model.Favorite;
 import com.globelle.back.service.FavoriteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,12 +19,12 @@ public class FavoriteController {
 
     @GetMapping("")
     public List<Favorite> getAllFavorite() {
-        return favoritesService.getAllFavorite();
+        return favoriteService.getAllFavorites();
     }
 
     @GetMapping("/{id}")
     public Favorite getFavoriteById(@PathVariable int id) throws ResponseStatusException {
-        Optional<Favorite> f = favoritesService.getFavorite(id);
+        Optional<Favorite> f = favoriteService.getFavorite(id);
         if(f.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }
