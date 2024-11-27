@@ -6,15 +6,16 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
 @SuperBuilder
 @Data
-abstract public class PaymentType {
+abstract public class PaymentType implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.UUID)
     @Getter
     private UUID id;
 

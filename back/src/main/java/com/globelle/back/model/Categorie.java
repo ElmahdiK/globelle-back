@@ -3,18 +3,16 @@ package com.globelle.back.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
-import lombok.Setter;
-import lombok.experimental.SuperBuilder;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 @Entity
-@SuperBuilder
 @Data
-public class Categorie {
+public class Categorie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.UUID)
     @Getter
     private UUID id;
 

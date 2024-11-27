@@ -14,7 +14,7 @@ import java.util.UUID;
 abstract class User  implements Serializable {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.UUID)
     @Getter
     private UUID id;
 

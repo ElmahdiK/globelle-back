@@ -17,8 +17,8 @@ public class BeautyService implements Serializable {
 
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Getter
+    @GeneratedValue(strategy= GenerationType.UUID)
+    //@Getter
     private UUID id;
 
     @Column(nullable = false)
@@ -39,13 +39,15 @@ public class BeautyService implements Serializable {
 //    @Enumerated
     @Column(nullable = false)
     @Getter
-    private Categories categories;
+    private Categorie categories;
 
-    public BeautyService(UUID id, String name, String price, String duration, Categories categories) {
+    /*
+    public BeautyService(UUID id, String name, String price, String duration, Categorie categories) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.duration = duration;
         this.categories = categories;
     }
+    */
 }
