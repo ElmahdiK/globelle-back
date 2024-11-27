@@ -1,34 +1,22 @@
 package com.globelle.back.model;
 
-import jakarta.persistence.*;
-import lombok.Data;
+public enum Categories {
+    MANICURE("Manicure"),
+    HAIRDRESSER("Hairdresser"),
+    BARBER("Barber"),
+    EPILATION("Epilation"),
+    MAKEUP("Makeup"),
+    SPA_MASSAGE("Spa & Massage"),
+    LASHES_BROWS("Lashes & Brows");
 
-import java.io.Serializable;
+    private final String text;
 
-@Entity
-@Data
-public class Categories implements Serializable {
-
-
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Integer id;
-
-    @Column
-    private String nom;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public String getNom() {
-        return nom;
+    Categories(final String text) {
+        this.text = text;
     }
 
     @Override
     public String toString() {
-        return "Categories{" +
-                "nom='" + nom + '\'' +
-                '}';
+        return text;
     }
 }
