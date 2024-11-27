@@ -11,7 +11,7 @@ import java.util.UUID;
 @Entity
 @SuperBuilder
 @Data
-abstract public class PaymentType {
+public class Categorie {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -20,13 +20,13 @@ abstract public class PaymentType {
 
     @Column(nullable = false)
     @Getter
-    private String paymentType;
+    private String categorieService;
 
-    public PaymentType(UUID id, String paymentType) {
+    public Categorie(UUID id, String categorieService) {
         this.id = id;
-        this.paymentType = paymentType;
+        this.categorieService = categorieService;
     }
 
-    public PaymentType() {
+    public Categorie() {
     }
 }
