@@ -11,7 +11,6 @@ import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -32,22 +31,15 @@ public class Provider extends User implements Serializable {
     private String description;
 
     @OneToMany
-    private List<BeautyServices> beautyServicesList = new ArrayList<>();
+    private List<BeautyService> beautyServiceList = new ArrayList<>();
 
     @OneToMany
-    private List<Reservation> reservations = new ArrayList<>();
+    private List<Opinion> opinionList = new ArrayList<>();
 
-
-    public Provider(UUID id, String name, String surname, String email, String password,
-                    String postalCode, String city, String address, String telephone,
-                    Date createdAt, Date updatedAt, boolean blacklisted, byte[] profilePhoto,
-                    String languages, String description, List<BeautyServices> beautyServicesList,  List<Reservation> reservations) {
-        super(id, name, surname, email, password, postalCode, city, address, telephone,
-                createdAt, updatedAt, blacklisted, profilePhoto);
-        this.languages = languages;
-        this.description = description;
-        this.beautyServicesList = beautyServicesList;
-        this.reservations = reservations;
+    public Provider(UUID id, String name, String surname, String email,
+                    String password, String postalCode, String city,
+                    String address, String telephone) {
+        super(id, name, surname, email, password, postalCode, city, address, telephone);
     }
 
     public Provider() {}

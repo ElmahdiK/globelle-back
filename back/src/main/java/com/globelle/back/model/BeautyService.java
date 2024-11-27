@@ -3,7 +3,6 @@ package com.globelle.back.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
@@ -14,13 +13,12 @@ import java.util.UUID;
 @Entity
 @SuperBuilder
 @Data
-public class BeautyServices implements Serializable {
+public class BeautyService implements Serializable {
 
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Getter
-    @Setter
     private UUID id;
 
     @Column(nullable = false)
@@ -38,13 +36,12 @@ public class BeautyServices implements Serializable {
     @Setter
     private String duration;
 
-    @Enumerated(EnumType.STRING)
+//    @Enumerated
     @Column(nullable = false)
     @Getter
-    @Setter
     private Categories categories;
 
-    public BeautyServices(UUID id, String name, String price, String duration, Categories categories) {
+    public BeautyService(UUID id, String name, String price, String duration, Categories categories) {
         this.id = id;
         this.name = name;
         this.price = price;
