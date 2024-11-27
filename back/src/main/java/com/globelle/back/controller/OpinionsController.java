@@ -1,5 +1,6 @@
 package com.globelle.back.controller;
 
+import com.globelle.back.model.Opinion;
 import com.globelle.back.service.OpinionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,13 +18,13 @@ public class OpinionsController {
     private OpinionsService opinionsService;
 
     @GetMapping("")
-    public List<Opinions> getAllOpinions() {
-        return opinionsService.getAllOpinions();
+    public List<Opinion> getAllOpinions() {
+        return opinionsService.getAllOpinion();
     }
 
     @GetMapping("/{id}")
-    public Opinions getOpinionById(@PathVariable int id) throws ResponseStatusException {
-        Optional<Opinions> o = opinionsService.getOpinion(id);
+    public Opinion getOpinionById(@PathVariable int id) throws ResponseStatusException {
+        Optional<Opinion> o = opinionsService.getOpinion(id);
         if(o.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }

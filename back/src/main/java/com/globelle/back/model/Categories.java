@@ -22,7 +22,7 @@ public enum Categories {
 
 
     MANICURE,
-    BARBER,
+    HAIRDRESSER,
     EPILATION,
     MAKEUP,
     SPA_MASSAGE,
