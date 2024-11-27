@@ -1,6 +1,6 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.Opinions;
+import com.globelle.back.model.Opinion;
 import com.globelle.back.service.OpinionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -18,7 +18,7 @@ public class OpinionsController {
     private OpinionsService opinionsService;
 
     @GetMapping("")
-    public List<Opinions> getAllOpinions() {
+    public List<Opinion> getAllOpinions() {
         return opinionsService.getAllOpinions();
     }
 }
