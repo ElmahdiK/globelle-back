@@ -1,4 +1,4 @@
-B
+
 package com.globelle.back.model;
 
 public enum Categories {

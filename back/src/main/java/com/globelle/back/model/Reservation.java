@@ -34,9 +34,6 @@ public class Reservation {
     @Getter
     private PaymentType paymentType;
 
-<<<<<<< Updated upstream
-}
-=======
     @Id
     @Getter
     private UUID clientId;
@@ -59,4 +56,3 @@ public class Reservation {
     public Reservation() {
     }
 }
->>>>>>> Stashed changes
