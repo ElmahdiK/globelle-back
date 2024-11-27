@@ -1,6 +1,5 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.BeautyServices;
 import com.globelle.back.service.BeautyServicesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

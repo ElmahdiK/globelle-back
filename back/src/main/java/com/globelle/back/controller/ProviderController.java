@@ -1,6 +1,5 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.BeautyServices;
 import com.globelle.back.model.Provider;
 import com.globelle.back.service.BeautyServicesService;
 import com.globelle.back.service.ProviderService;

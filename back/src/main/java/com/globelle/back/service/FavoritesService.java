@@ -1,7 +1,6 @@
 package com.globelle.back.service;
 
 import com.globelle.back.dao.FavoritesDAO;
-import com.globelle.back.model.Favorites;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

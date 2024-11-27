@@ -1,6 +1,5 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.Favorites;
 import com.globelle.back.service.FavoritesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
