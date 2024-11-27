@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OpinionsService {
@@ -15,5 +16,9 @@ public class OpinionsService {
 
     public List<Opinions> getAllOpinions(){
         return (List<Opinions>) opinionsDAO.findAll();
+    }
+
+    public Optional<Opinions> getOpinion(int id) {
+        return opinionsDAO.findById(id);
     }
 }

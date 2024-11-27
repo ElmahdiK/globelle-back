@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProviderService {
@@ -15,5 +16,9 @@ public class ProviderService {
 
     public List<Provider> getAllProviders(){
         return (List<Provider>) providerDAO.findAll();
+    }
+
+    public Optional<Provider> getProvider(int id) {
+        return providerDAO.findById(id);
     }
 }

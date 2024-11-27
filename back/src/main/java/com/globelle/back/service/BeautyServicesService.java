@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BeautyServicesService {
@@ -15,5 +16,9 @@ public class BeautyServicesService {
 
     public List<BeautyServices> getAllBeautyServices(){
         return (List<BeautyServices>) beautyServicesDAO.findAll();
+    }
+
+    public Optional<BeautyServices> getBeautyService(int id) {
+        return beautyServicesDAO.findById(id);
     }
 }
