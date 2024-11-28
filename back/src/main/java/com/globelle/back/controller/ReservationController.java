@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static com.globelle.back.service.ReservationService.getReservation;
 
 @RestController
 @RequestMapping("/reservations")
