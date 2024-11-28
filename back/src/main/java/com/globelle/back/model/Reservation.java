@@ -1,5 +1,6 @@
 package com.globelle.back.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -16,40 +17,27 @@ import java.util.UUID;
 public class Reservation implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.UUID)
-    @Getter
     private UUID id;
 
+    /*
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss", timezone = "UTC")
     @Temporal(TemporalType.TIMESTAMP)
-    @Getter
     private Date reservationDate;
-
-    @Column(nullable = false)
-    @Getter
-    private String price;
-
-    @Column(nullable = false)
-    @Getter
-    private String duration;
-
-    @Column(nullable = false)
-    @Getter
-    private PaymentType paymentType;
+    */
+    @Column
+    private String reservationDate;
 
     //@Id
-    @Getter
+    @Column
     private UUID clientId;
 
     //@Id
-    @Getter
+    @Column
     private UUID providerId;
 
-    public Reservation(UUID id, Date reservationDate, String price, String duration,
-                       PaymentType paymentType, UUID clientId, UUID providerId) {
+    public Reservation(UUID id, String reservationDate, UUID clientId, UUID providerId) {
         this.id = id;
         this.reservationDate = reservationDate;
-        this.price = price;
-        this.duration = duration;
-        this.paymentType = paymentType;
         this.clientId = clientId;
         this.providerId = providerId;
     }

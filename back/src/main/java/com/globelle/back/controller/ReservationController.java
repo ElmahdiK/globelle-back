@@ -9,6 +9,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/reservations")
@@ -30,4 +31,19 @@ public class ReservationController {
         }
         return r.get();
     }
+
+    // providers/id/date
+    // ex: http://localhost:8080/providers/1/20241214
+    // retour la liste des heures
+    @GetMapping("/{id}/{date}")
+    public Reservation getBookedTimesFromProviderByDate(@PathVariable UUID id, @PathVariable String date) throws ResponseStatusException {
+
+        List<Reservation> r = reservationService.getBookedTimesFromProviderByDate(id, date);
+        if(r.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
+        }
+        return r.getFirst();
+        // List.of("08:00", "09:00", "10:00");
+    }
+
 }

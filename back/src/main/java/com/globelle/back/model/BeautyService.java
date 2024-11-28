@@ -3,8 +3,6 @@ package com.globelle.back.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
@@ -15,30 +13,20 @@ import java.util.UUID;
 @Data
 public class BeautyService implements Serializable {
 
-
     @Id
     @GeneratedValue(strategy= GenerationType.UUID)
-    //@Getter
     private UUID id;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String name;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String price;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String duration;
 
-//    @Enumerated
     @Column(nullable = false)
-    @Getter
     private Categorie categories;
 
     /*

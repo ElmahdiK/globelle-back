@@ -3,6 +3,7 @@ package com.globelle.back.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,10 +13,12 @@ import java.util.UUID;
 
 @MappedSuperclass
 abstract class User  implements Serializable {
-
     @Id
-    @GeneratedValue(strategy=GenerationType.UUID)
-    @Getter
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator"
+    )
     private UUID id;
 
     @Column(nullable = false)

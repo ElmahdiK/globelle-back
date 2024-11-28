@@ -5,6 +5,7 @@ import com.globelle.back.model.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,9 +22,4 @@ public class ProviderService {
     public Optional<Provider> getProvider(int id) {
         return providerDAO.findById(id);
     }
-/*
-    public Optional<Provider> getBeautyServicesFromProvider(int id) {
-        return providerDAO.findById(id);
-    }
-*/
 }

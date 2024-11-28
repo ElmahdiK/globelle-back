@@ -22,6 +22,11 @@ public class CategorieController {
         return categorieService.getAllCategories();
     }
 
+    @GetMapping("/")
+    public List<Categorie> getAllCategoriesWithSlash() {
+        return categorieService.getAllCategories();
+    }
+
     @GetMapping("/{id}")
     public Categorie getCategorieById(@PathVariable int id) throws ResponseStatusException {
         Optional<Categorie> c = categorieService.getCategorie(id);
@@ -31,3 +36,5 @@ public class CategorieController {
         return c.get();
     }
 }
+
+

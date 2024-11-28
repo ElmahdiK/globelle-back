@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ReservationService {
@@ -21,4 +22,10 @@ public class ReservationService {
     public Optional<Reservation> getReservation(int id) {
         return reservationDAO.findById(id);
     }
+
+
+    public List<Reservation> getBookedTimesFromProviderByDate(UUID id, String date) {
+        return reservationDAO.findByProviderIdAndReservationDateLike(id, date);
+    }
+
 }

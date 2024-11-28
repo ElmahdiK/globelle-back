@@ -12,15 +12,15 @@ import java.util.UUID;
 public class Categorie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.UUID)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Getter
-    private UUID id;
+    private Integer id;
 
     @Column(nullable = false)
     @Getter
     private String categorieService;
 
-    public Categorie(UUID id, String categorieService) {
+    public Categorie(Integer id, String categorieService) {
         this.id = id;
         this.categorieService = categorieService;
     }
