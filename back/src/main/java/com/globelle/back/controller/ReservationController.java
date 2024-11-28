@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static com.globelle.back.service.ReservationService.getReservation;
+
 @RestController
 @RequestMapping("/reservations")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -36,14 +38,27 @@ public class ReservationController {
     // ex: http://localhost:8080/providers/1/20241214
     // retour la liste des heures
     @GetMapping("/{id}/{date}")
-    public Reservation getBookedTimesFromProviderByDate(@PathVariable UUID id, @PathVariable String date) throws ResponseStatusException {
+    public Reservation getBookedTimesFromProviderByDate(@PathVariable ("reservationId") String uuidStr, @PathVariable String date) throws ResponseStatusException {
 
-        List<Reservation> r = reservationService.getBookedTimesFromProviderByDate(id, date);
-        if(r.isEmpty()) {
+        Reservation r = reservationService.getBookedTimesFromProviderByDate(getUuid(uuidStr), date);
+        if(r == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }
-        return r.getFirst();
+        return r;
         // List.of("08:00", "09:00", "10:00");
+    }
+
+
+
+    private UUID getUuid(String uuidStr) {
+//        if(uuidStr == null) {
+//            throw new IllegalReservationExeption("Reservation ID should not be empty");
+//        }
+//        try {
+            return UUID.fromString(uuidStr);
+//        } catch(IllegalArgumentException iae) {
+//            throw new IllegalReservationExeption("could not parse")
+//        }
     }
 
 }

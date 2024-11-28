@@ -11,7 +11,7 @@ import java.util.UUID;
 public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
 
    // @Query("SELECT r FROM Reservation r WHERE r.providerId = :providerId AND CONCAT(YEAR(r.reservationDate), '') LIKE %:datePattern%")
-    List<Reservation> findByProviderIdAndReservationDateLike(
+    Reservation findByProviderIdAndReservationDateLike(
             @Param("providerId") UUID providerId,
             @Param("datePattern") String datePattern);
 }

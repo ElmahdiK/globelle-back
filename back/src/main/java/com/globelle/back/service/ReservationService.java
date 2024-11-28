@@ -24,7 +24,7 @@ public class ReservationService {
     }
 
 
-    public List<Reservation> getBookedTimesFromProviderByDate(UUID id, String date) {
+    public Reservation getBookedTimesFromProviderByDate(UUID id, String date) {
         return reservationDAO.findByProviderIdAndReservationDateLike(id, date);
     }
 
