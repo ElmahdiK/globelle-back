@@ -9,16 +9,15 @@ import lombok.Getter;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @SuperBuilder
 @Data
 public class Favorite implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.UUID)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Getter
-    private UUID id;
+    private Integer id;
 
     public Favorite() {
     }

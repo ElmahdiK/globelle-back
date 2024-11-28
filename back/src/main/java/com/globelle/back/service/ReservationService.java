@@ -19,13 +19,16 @@ public class ReservationService {
         return (List<Reservation>) reservationDAO.findAll();
     }
 
-    public Optional<Reservation> getReservation(int id) {
+    public Optional<Reservation> getReservation(Integer id) {
         return reservationDAO.findById(id);
     }
 
+    public List<String> getReservationById(Integer id) {
+        return reservationDAO.findByProviderId(id);
+    }
 
-    public Reservation getBookedTimesFromProviderByDate(UUID id, String date) {
-        return reservationDAO.findByProviderIdAndReservationDateLike(id, date);
+    public List<String> getReservationByIdAndDate(Integer id, String date) {
+        return reservationDAO.findByProviderIdAndDate(id, date);
     }
 
 }

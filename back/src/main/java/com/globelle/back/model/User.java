@@ -9,81 +9,57 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @MappedSuperclass
 abstract class User  implements Serializable {
     @Id
-    @GeneratedValue(generator = "UUID")
+    /*@GeneratedValue(generator = "UUID")
     @GenericGenerator(
             name = "UUID",
             strategy = "org.hibernate.id.UUIDGenerator"
-    )
-    private UUID id;
+    )*/
+    private Integer id;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String name;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String surname;
 
     @Column(nullable = false, unique = true)
-    @Getter
-    @Setter
     private String email;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String password;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String postalCode;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String city;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String address;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private String telephone;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Getter
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Getter
-    @Setter
     private Date updatedAt;
 
     @Column(nullable = false)
-    @Getter
-    @Setter
     private boolean blacklisted;
 
     @Lob
-    @Getter
-    @Setter
     private byte[] profilePhoto;
 
     @OneToMany
     private List<Reservation> reservationsList = new ArrayList<>();
 
-    public User(UUID id, String name, String surname, String email,
+    public User(Integer id, String name, String surname, String email,
                 String password, String postalCode, String city,
                 String address, String telephone) {
         this.id = id;

@@ -6,12 +6,14 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
 
-   // @Query("SELECT r FROM Reservation r WHERE r.providerId = :providerId AND CONCAT(YEAR(r.reservationDate), '') LIKE %:datePattern%")
-    Reservation findByProviderIdAndReservationDateLike(
-            @Param("providerId") UUID providerId,
-            @Param("datePattern") String datePattern);
+    @Query("SELECT r.reservationDate FROM Reservation r WHERE r.providerId = :providerId")
+    List<String> findByProviderId(int providerId);
+
+    @Query("SELECT r.reservationDate FROM Reservation r WHERE r.providerId = :providerId AND r.reservationDate LIKE :reservationDate%")
+    List<String> findByProviderIdAndDate(int providerId, String reservationDate);
 }

@@ -6,18 +6,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Data;
 import lombok.Getter;
-import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Data
 public class Opinion implements Serializable {
     @Id
-    @GeneratedValue(strategy= GenerationType.UUID)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @Getter
-    private UUID id;
+    private Integer id;
 
     public Opinion() {
     }

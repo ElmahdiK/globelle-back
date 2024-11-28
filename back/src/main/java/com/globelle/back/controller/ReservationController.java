@@ -7,10 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
 
 @RestController
 @RequestMapping("/reservations")
@@ -25,7 +24,7 @@ public class ReservationController {
     }
 
     @GetMapping("/{id}")
-    public Reservation getReservationById(@PathVariable int id) throws ResponseStatusException {
+    public Reservation getReservationById(@PathVariable Integer id) throws ResponseStatusException {
         Optional<Reservation> r = reservationService.getReservation(id);
         if (r.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
@@ -33,31 +32,25 @@ public class ReservationController {
         return r.get();
     }
 
-    // providers/id/date
-    // ex: http://localhost:8080/providers/1/20241214
-    // retour la liste des heures
-    @GetMapping("/{id}/{date}")
-    public Reservation getBookedTimesFromProviderByDate(@PathVariable ("reservationId") String uuidStr, @PathVariable String date) throws ResponseStatusException {
-
-        Reservation r = reservationService.getBookedTimesFromProviderByDate(getUuid(uuidStr), date);
-        if(r == null) {
+    // ex: http://localhost:8080/reservations/provider/0
+    @GetMapping("/provider/{id}")
+    public List<String> getReservationByProviderId(@PathVariable Integer id) throws ResponseStatusException {
+        List<String> r = reservationService.getReservationById(id);
+        if (r.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
         }
         return r;
-        // List.of("08:00", "09:00", "10:00");
     }
 
-
-
-    private UUID getUuid(String uuidStr) {
-//        if(uuidStr == null) {
-//            throw new IllegalReservationExeption("Reservation ID should not be empty");
-//        }
-//        try {
-            return UUID.fromString(uuidStr);
-//        } catch(IllegalArgumentException iae) {
-//            throw new IllegalReservationExeption("could not parse")
-//        }
+    // ex: http://localhost:8080/reservations/provider/0/20241201
+    @GetMapping("/provider/{id}/{date}")
+    public List<String> getReservationByProviderIdAndDate(@PathVariable Integer id, @PathVariable String date) throws ResponseStatusException {
+        List<String> r = reservationService.getReservationByIdAndDate(id, date);
+        List<String> horaires = new ArrayList<>();
+        if (!r.isEmpty()) {
+            for (String datetime : r) horaires.add(datetime.split(" ")[1]);
+        }
+        return horaires;
     }
 
 }
