@@ -13,18 +13,8 @@ public class Categorie implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Getter
     private Integer id;
 
     @Column(nullable = false)
-    @Getter
     private String categorieService;
-
-    public Categorie(Integer id, String categorieService) {
-        this.id = id;
-        this.categorieService = categorieService;
-    }
-
-    public Categorie() {
-    }
 }

@@ -16,9 +16,5 @@ import java.io.Serializable;
 public class Favorite implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Getter
     private Integer id;
-
-    public Favorite() {
-    }
 }

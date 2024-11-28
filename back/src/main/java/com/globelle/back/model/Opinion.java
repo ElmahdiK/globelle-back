@@ -14,9 +14,5 @@ import java.io.Serializable;
 public class Opinion implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @Getter
     private Integer id;
-
-    public Opinion() {
-    }
 }

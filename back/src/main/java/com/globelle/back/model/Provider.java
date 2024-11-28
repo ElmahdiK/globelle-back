@@ -16,7 +16,6 @@ import java.util.List;
 @Entity
 @Data
 public class Provider extends User implements Serializable {
-
     @Column
     private String languages;
 
@@ -28,12 +27,4 @@ public class Provider extends User implements Serializable {
 
     @OneToMany
     private List<Opinion> opinionList = new ArrayList<>();
-
-    public Provider(Integer id, String name, String surname, String email,
-                    String password, String postalCode, String city,
-                    String address, String telephone) {
-        super(id, name, surname, email, password, postalCode, city, address, telephone);
-    }
-
-    public Provider() {}
 }
