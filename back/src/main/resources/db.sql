@@ -39,6 +39,13 @@ INSERT INTO beauty_service (id, name, price, category_id, provider_id) VALUES
 (3, 'Haircut', '40.00',  2, 2),
 (4, 'Hair coloring', '70.00', 2, 2);
 
+INSERT INTO reservation (id, client_id, provider_id, reservation_date)
+VALUES (1, 1, 2, '2024-11-29');
 
+INSERT INTO reservation (id, client_id, provider_id, reservation_date)
+VALUES (2, 2, 1, '2024-11-30');
+
+INSERT INTO reservation (id, client_id, provider_id, reservation_date)
+VALUES (3, 1, 1, '2024-12-01');
 
 
