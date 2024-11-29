@@ -1,5 +1,6 @@
 package com.globelle.back.controller;
 
+import com.globelle.back.model.BeautyService;
 import com.globelle.back.model.Provider;
 import com.globelle.back.service.BeautyServiceService;
 import com.globelle.back.service.ProviderService;
@@ -34,6 +35,17 @@ public class ProviderController {
         return p.get();
     }
 
+
+
+    // ex: http://localhost:8080/providers/1/services
+    @GetMapping("/{id}/services")
+    public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) throws ResponseStatusException {
+        List<BeautyService> bs = beautyServiceService.getAllBeautyServicesByProviderId(id);
+        if(bs.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
+        }
+        return bs;
+    }
 
 
     /*

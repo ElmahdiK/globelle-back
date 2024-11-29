@@ -1,13 +1,14 @@
 package com.globelle.back.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 
 @Entity
-@SuperBuilder
+//@SuperBuilder
 @Data
 public class BeautyService implements Serializable {
 
@@ -21,15 +22,13 @@ public class BeautyService implements Serializable {
     @Column(nullable = false)
     private String price;
 
-    @Column(nullable = false)
-    private String duration;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
+    private Categorie category_id;
 
-    @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
-    private Categorie category;
-
-
-    @ManyToOne
-    @JoinColumn(name = "provider_id", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "provider_id")
+    @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
     private Provider provider;
 }

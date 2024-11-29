@@ -30,15 +30,4 @@ public class BeautyServiceController {
         }
         return b.get();
     }
-
-
-    // ex: http://localhost:8080/reservations/provider/0/services
-    @GetMapping("/provider/{id}/{services}")
-    public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) throws ResponseStatusException {
-        List<BeautyService> bs = beautyServiceService.getAllBeautyServicesByProviderId(id);
-        if(bs.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
-        }
-        return bs;
-    }
 }
