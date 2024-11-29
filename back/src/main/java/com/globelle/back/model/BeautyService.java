@@ -25,10 +25,10 @@ public class BeautyService implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
     @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
-    private Categorie category_id;
+    private Categorie categoryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "provider_id")
     @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
-    private Provider provider;
+    private Provider providerId;
 }

@@ -36,12 +36,12 @@ public class BeautyServiceController {
 
     @DeleteMapping("/{id}")
     public void deleteBeautyService(@PathVariable int id) {
-        beautyServiceService.deleteProvider(id);
+        beautyServiceService.deleteBeautyService(id);
     }
 
     @PostMapping("")
     public ResponseEntity<Integer> insertBeautyService(@RequestBody BeautyService bs) {
-        BeautyService bsNew = beautyServiceService.insertProvider(bs);
+        BeautyService bsNew = beautyServiceService.insertBeautyService(bs);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(bsNew.getId());
@@ -49,7 +49,7 @@ public class BeautyServiceController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Integer> updateBeautyService(@PathVariable int id, @RequestBody BeautyService bs) {
-        BeautyService bsUpdate = beautyServiceService.updateProvider(bs, id);
+        BeautyService bsUpdate = beautyServiceService.updateBeautyService(bs, id);
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
                 .body(bsUpdate.getId());
