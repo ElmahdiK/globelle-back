@@ -1,5 +1,6 @@
 package com.globelle.back.controller;
 
+import com.globelle.back.model.BeautyService;
 import com.globelle.back.model.Reservation;
 import com.globelle.back.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,6 @@ public class ReservationController {
         }
         return horaires;
     }
+
 
 }

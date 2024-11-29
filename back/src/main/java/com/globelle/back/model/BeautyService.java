@@ -24,6 +24,12 @@ public class BeautyService implements Serializable {
     @Column(nullable = false)
     private String duration;
 
-    @Column(nullable = false)
-    private Categorie categories;
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Categorie category;
+
+
+    @ManyToOne
+    @JoinColumn(name = "provider_id", nullable = false)
+    private Provider provider;
 }
