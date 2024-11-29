@@ -1,9 +1,11 @@
 package com.globelle.back.controller;
 
 import com.globelle.back.model.BeautyService;
+import com.globelle.back.model.Provider;
 import com.globelle.back.service.BeautyServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -30,4 +32,28 @@ public class BeautyServiceController {
         }
         return b.get();
     }
+
+
+    @DeleteMapping("/{id}")
+    public void deleteBeautyService(@PathVariable int id) {
+        beautyServiceService.deleteProvider(id);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Integer> insertBeautyService(@RequestBody BeautyService bs) {
+        BeautyService bsNew = beautyServiceService.insertProvider(bs);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(bsNew.getId());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Integer> updateBeautyService(@PathVariable int id, @RequestBody BeautyService bs) {
+        BeautyService bsUpdate = beautyServiceService.updateProvider(bs, id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(bsUpdate.getId());
+    }
+
+
 }

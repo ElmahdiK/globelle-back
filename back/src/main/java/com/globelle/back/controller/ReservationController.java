@@ -1,10 +1,12 @@
 package com.globelle.back.controller;
 
 import com.globelle.back.model.BeautyService;
+import com.globelle.back.model.Provider;
 import com.globelle.back.model.Reservation;
 import com.globelle.back.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -53,6 +55,28 @@ public class ReservationController {
         }
         return horaires;
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteReservation(@PathVariable int id) {
+        reservationService.deleteReservation(id);
+    }
+
+    @PostMapping("")
+    public ResponseEntity<Integer> insertReservation(@RequestBody Reservation r) {
+        Reservation rNew = reservationService.insertReservation(r);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(rNew.getId());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Integer> updateReservation(@PathVariable int id, @RequestBody Reservation r) {
+        Reservation rUpdate = reservationService.updateReservation(r, id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(rUpdate.getId());
+    }
+
 
 
 }

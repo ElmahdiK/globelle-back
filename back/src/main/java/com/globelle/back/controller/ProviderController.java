@@ -6,6 +6,7 @@ import com.globelle.back.service.BeautyServiceService;
 import com.globelle.back.service.ProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -27,7 +28,7 @@ public class ProviderController {
     }
 
     @GetMapping("/{id}")
-    public Provider getProviderById(@PathVariable int id) throws ResponseStatusException {
+    public Provider getProvider(@PathVariable int id) throws ResponseStatusException {
         Optional<Provider> p = providerService.getProvider(id);
         if(p.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
@@ -48,15 +49,26 @@ public class ProviderController {
     }
 
 
-    /*
-    @GetMapping("/{id}/services")
-    public Provider getBeautyServicesFromProvider(@PathVariable int idProvider) throws ResponseStatusException {
-
-        Optional<BeautyServices> b = beautyServicesService.getAllBeautyServices(idProvider);
-        if(b.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
-        }
-        return b.get();
+    @DeleteMapping("/{id}")
+    public void deleteProvider(@PathVariable int id) {
+        providerService.deleteProvider(id);
     }
-    */
+
+    @PostMapping("")
+    public ResponseEntity<Integer> insertProvider(@RequestBody Provider p) {
+        Provider pNew = providerService.insertProvider(p);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(pNew.getId());
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Integer> updateProvider(@PathVariable int id, @RequestBody Provider p) {
+        Provider pUpdate = providerService.updateProvider(p, id);
+        return ResponseEntity
+                .status(HttpStatus.NO_CONTENT)
+                .body(pUpdate.getId());
+    }
+
+
 }
