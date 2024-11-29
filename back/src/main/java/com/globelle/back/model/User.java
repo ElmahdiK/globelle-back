@@ -41,9 +41,11 @@ abstract class User  implements Serializable {
     @Column(nullable = false)
     private String telephone;
 
+    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
 
+    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt;
 
@@ -51,7 +53,7 @@ abstract class User  implements Serializable {
     private boolean blacklisted;
 
     @Column
-    private String profilePhoto;
+    private String urlImage;
 
     @OneToMany
     private List<Reservation> reservationsList = new ArrayList<>();

@@ -2,10 +2,8 @@ package com.globelle.back.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.Getter;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 @Entity
 @Data
@@ -17,4 +15,7 @@ public class Categorie implements Serializable {
 
     @Column(nullable = false)
     private String categorieService;
+
+    @Column(nullable = false)
+    private String urlImage;
 }

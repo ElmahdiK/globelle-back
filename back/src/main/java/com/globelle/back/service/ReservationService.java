@@ -31,4 +31,18 @@ public class ReservationService {
         return reservationDAO.findByProviderIdAndDate(id, date);
     }
 
+    public void deleteReservation(int id) {
+        reservationDAO.deleteById(id);
+
+    }
+
+    public Reservation insertReservation(Reservation r) {
+        r.setId(null);
+        return reservationDAO.save(r);
+    }
+
+    public Reservation updateReservation(Reservation r, int id) {
+        r.setId(id);
+        return reservationDAO.save(r);
+    }
 }

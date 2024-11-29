@@ -26,4 +26,19 @@ public class BeautyServiceService {
         return beautyServiceDAO.findByProviderId(id);
     }
 
+    public void deleteBeautyService(int id) {
+        beautyServiceDAO.deleteById(id);
+    }
+
+    public BeautyService insertBeautyService(BeautyService bs) {
+        bs.setId(null);
+        return beautyServiceDAO.save(bs);
+    }
+
+
+    public BeautyService updateBeautyService(BeautyService bs, int id) {
+        bs.setId(id);
+        return beautyServiceDAO.save(bs);
+    }
+
 }
