@@ -12,4 +12,5 @@ public interface BeautyServiceDAO extends CrudRepository<BeautyService, Integer>
     @Query(value = "SELECT * FROM beauty_service b WHERE b.provider_id = :providerId", nativeQuery = true)
     List<BeautyService> findByProviderId(@Param("providerId") int providerId);
 
+
 }

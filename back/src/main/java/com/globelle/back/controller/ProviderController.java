@@ -26,6 +26,11 @@ public class ProviderController {
         return providerService.getAllProviders();
     }
 
+    @GetMapping(value = {"/search"})
+    public List<Provider> getProviderByBeautyServicesName(@RequestParam("service") String serviceName) {
+        return providerService.getProviderByBeautyServicesName(serviceName);
+    }
+
     @GetMapping(value = {"/{id}", "/{id}/"})
     public Provider getProviderById(@PathVariable int id) {
         Optional<Provider> p = providerService.getProvider(id);
@@ -37,6 +42,9 @@ public class ProviderController {
         List<BeautyService> bs = beautyServiceService.getAllBeautyServicesByProviderId(id);
         return bs;
     }
+
+    // /providers?service=manicure
+   // @GetMapping("/")
 
 
     @DeleteMapping("/{id}")
