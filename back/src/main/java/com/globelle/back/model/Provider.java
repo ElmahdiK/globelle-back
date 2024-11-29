@@ -23,7 +23,10 @@ public class Provider extends User implements Serializable {
     private String description;
 
     @Column
-    private int nbOpinions;
+    private float nb_opinions;
+
+    @Column
+    private String dispo;
 
     @OneToMany
     private List<BeautyService> beautyServiceList = new ArrayList<>();
