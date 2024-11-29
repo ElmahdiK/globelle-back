@@ -1,6 +1,7 @@
 package com.globelle.back.service;
 
 import com.globelle.back.dao.ProviderDAO;
+import com.globelle.back.model.BeautyService;
 import com.globelle.back.model.Provider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,9 @@ public class ProviderService {
         return providerDAO.findById(id);
     }
 
+    public List<Provider> getProviderByBeautyServicesName(String name) {
+        return providerDAO.findProviderByBeautyServicesName(name);
+    }
 
 //    public Provider getProviderById(int id) {
 //        Optional<Provider> p = providerDAO.findById(id);
