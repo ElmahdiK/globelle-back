@@ -3,6 +3,7 @@ package com.globelle.back.service;
 import com.globelle.back.dao.ProviderDAO;
 import com.globelle.back.model.BeautyService;
 import com.globelle.back.model.Provider;
+import com.globelle.back.model.Reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,4 +46,5 @@ public class ProviderService {
         p.setId(id);
         return providerDAO.save(p);
     }
+
 }

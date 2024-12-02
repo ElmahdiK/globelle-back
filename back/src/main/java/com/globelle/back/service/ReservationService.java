@@ -45,4 +45,13 @@ public class ReservationService {
         r.setId(id);
         return reservationDAO.save(r);
     }
+
+
+    public List<Reservation> getReservationsByProviderId(Integer providerId) {
+        return reservationDAO.findReservationsByProviderId(providerId);
+    }
+
+    public Reservation getReservationByReservationId(Integer providerId,Integer id) {
+        return reservationDAO.findReservationByReservationId(providerId, id);
+    }
 }

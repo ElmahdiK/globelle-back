@@ -26,7 +26,7 @@ public class Provider extends User implements Serializable {
     private float note;
 
     @Column
-    private int nb_opinions;
+    private int nbOpinions;
 
     @Column
     private String dispo;

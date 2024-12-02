@@ -16,4 +16,11 @@ public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
 
     @Query("SELECT r.reservationDate FROM Reservation r WHERE r.providerId = :providerId AND r.reservationDate LIKE :reservationDate%")
     List<String> findByProviderIdAndDate(int providerId, String reservationDate);
+
+
+    @Query("SELECT lr.reservations_list_id FROM provider_reservations_list lr WHERE lr.provider_id = :providerId")
+    List<Reservation> findReservationsByProviderId(Integer providerId);
+
+    @Query("SELECT * FROM reservation r WHERE r.id = :id AND r.provider_id = : providerId")
+    Reservation findReservationByReservationId(Integer providerId, Integer id);
 }

@@ -42,16 +42,6 @@ public class ReservationController {
         return r;
     }
 
-    // ex: http://localhost:8080/reservations/provider/0/20241201
-    @GetMapping("/provider/{id}/{date}")
-    public List<String> getReservationByProviderIdAndDate(@PathVariable Integer id, @PathVariable String date) throws ResponseStatusException {
-        List<String> r = reservationService.getReservationByIdAndDate(id, date);
-        List<String> horaires = new ArrayList<>();
-        if (!r.isEmpty()) {
-            for (String datetime : r) horaires.add(datetime.split(" ")[1]);
-        }
-        return horaires;
-    }
 
     @DeleteMapping("/{id}")
     public void deleteReservation(@PathVariable int id) {
