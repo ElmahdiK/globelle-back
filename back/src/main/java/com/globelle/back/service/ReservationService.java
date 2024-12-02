@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class ReservationService {
@@ -51,7 +50,16 @@ public class ReservationService {
         return reservationDAO.findReservationsByProviderId(providerId);
     }
 
-    public Reservation getReservationByReservationId(Integer providerId,Integer id) {
-        return reservationDAO.findReservationByReservationId(providerId, id);
+    public Reservation getReservationByReservationIdAndProviderId(Integer providerId, Integer id) {
+        return reservationDAO.findReservationByReservationIdAndProviderId(providerId, id);
+    }
+
+    public List<Reservation> getReservationsByClientId(Integer clientId) {
+        return reservationDAO.findReservationsByClientId(clientId);
+    }
+
+    public Reservation getReservationByReservationIdAndClientId(Integer clientId, Integer id) {
+        return reservationDAO.findReservationByReservationIdAndClientId(clientId, id);
+
     }
 }

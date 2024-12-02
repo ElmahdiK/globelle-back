@@ -11,7 +11,6 @@ import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 
 @Entity
-@SuperBuilder
 @Data
 public class Favorite implements Serializable {
     @Id

@@ -6,8 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
 
@@ -23,5 +21,11 @@ public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
     List<Reservation> findReservationsByProviderId(@Param("providerId") int providerId);
 
     @Query(value = "SELECT r.* FROM reservation r INNER JOIN provider_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.provider_id = :providerId AND r.id = :id", nativeQuery = true)
-    Reservation findReservationByReservationId(@Param("providerId") int providerId,@Param("id") int id);
+    Reservation findReservationByReservationIdAndProviderId(@Param("providerId") int providerId, @Param("id") int id);
+
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN client_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.client_id = :clientId", nativeQuery = true)
+    List<Reservation> findReservationsByClientId(@Param("clientId")int clientId);
+
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN client_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.client_id = :clientId AND r.id = :id", nativeQuery = true)
+    Reservation findReservationByReservationIdAndClientId(@Param("clientId")Integer clientId, @Param("id") Integer id);
 }

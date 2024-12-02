@@ -11,7 +11,6 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
-//@SuperBuilder
 @Data
 public class Client extends User  implements Serializable {
 
