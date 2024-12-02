@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Entity
 @Data
-public class Client extends User  implements Serializable {
+public class Client extends Userr implements Serializable {
 
     @OneToMany
     private List<Favorite> favoritesList = new ArrayList<>();
