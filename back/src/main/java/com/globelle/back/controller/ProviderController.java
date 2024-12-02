@@ -32,14 +32,16 @@ public class ProviderController {
         return providerService.getAllProviders();
     }
 
+    // search?service="manicure"
     @GetMapping(value = {"/search"})
     public List<Provider> getProviderByBeautyServicesName(@RequestParam("service") String serviceName) {
         return providerService.getProviderByBeautyServicesName(serviceName);
     }
 
-    @GetMapping(value = {"/{id}/reservations"})
-    public List<Reservation> getReservationsProviderId(@PathVariable Integer providerId) {
-        return reservationService.getReservationsByProviderId(providerId);
+    @GetMapping(value = {"/{id}", "/{id}/"})
+    public Provider getProvider(@PathVariable int id) {
+        Optional<Provider> p = providerService.getProvider(id);
+        return p.orElse(null);
     }
 
     @GetMapping(value = {"/{providerId}/reservations/{id}"})
@@ -47,21 +49,22 @@ public class ProviderController {
         return reservationService.getReservationByReservationId(providerId, id);
     }
 
-    // ex: http://localhost:8080/provider/0/reservations/20241201
-    @GetMapping("{id}/reservations/{id}/{date}")
-    public List<String> getReservationByProviderIdAndDate(@PathVariable Integer id, @PathVariable String date) throws ResponseStatusException {
+    //http://localhost:8080/providers/2/reservations
+    @GetMapping(value = {"/{id}/reservations"})
+    public List<Reservation> getReservationsProviderId(@PathVariable int id) {
+        return reservationService.getReservationsByProviderId(id);
+    }
+
+    @GetMapping(value = {"/{id}/reservations/date/{date}"})
+    //http://localhost:8080/providers/2/reservations/date/20241201
+    public List<String> getReservationByProviderIdAndDate(@PathVariable int id, @PathVariable String date) {
         List<String> r = reservationService.getReservationByIdAndDate(id, date);
         List<String> horaires = new ArrayList<>();
+        System.out.println(r);
         if (!r.isEmpty()) {
             for (String datetime : r) horaires.add(datetime.split(" ")[1]);
         }
         return horaires;
-    }
-
-    @GetMapping(value = {"/{id}", "/{id}/"})
-    public Provider getProvider(@PathVariable int id) {
-        Optional<Provider> p = providerService.getProvider(id);
-        return p.get();
     }
 
     @GetMapping(value = {"/{id}/services", "/{id}/services/"})

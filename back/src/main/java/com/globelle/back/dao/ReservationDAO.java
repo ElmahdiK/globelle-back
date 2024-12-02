@@ -14,13 +14,14 @@ public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
     @Query("SELECT r.reservationDate FROM Reservation r WHERE r.providerId = :providerId")
     List<String> findByProviderId(int providerId);
 
-    @Query("SELECT r.reservationDate FROM Reservation r WHERE r.providerId = :providerId AND r.reservationDate LIKE :reservationDate%")
+    // SELECT r.reservation_date FROM Reservation r WHERE r.provider_id = "1" AND r.reservation_date = "2024-11-30"
+    @Query(value = "SELECT r.reservation_date FROM Reservation r WHERE r.provider_id = :providerId AND r.reservation_date LIKE :reservationDate%", nativeQuery = true)
     List<String> findByProviderIdAndDate(int providerId, String reservationDate);
 
 
-    @Query("SELECT lr.reservations_list_id FROM provider_reservations_list lr WHERE lr.provider_id = :providerId")
-    List<Reservation> findReservationsByProviderId(Integer providerId);
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN provider_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.provider_id = :providerId", nativeQuery = true)
+    List<Reservation> findReservationsByProviderId(@Param("providerId") int providerId);
 
-    @Query("SELECT * FROM reservation r WHERE r.id = :id AND r.provider_id = : providerId")
-    Reservation findReservationByReservationId(Integer providerId, Integer id);
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN provider_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.provider_id = :providerId AND r.id = :id", nativeQuery = true)
+    Reservation findReservationByReservationId(@Param("providerId") int providerId,@Param("id") int id);
 }

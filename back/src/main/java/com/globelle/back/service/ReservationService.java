@@ -27,7 +27,7 @@ public class ReservationService {
         return reservationDAO.findByProviderId(id);
     }
 
-    public List<String> getReservationByIdAndDate(Integer id, String date) {
+    public List<String> getReservationByIdAndDate(int id, String date) {
         return reservationDAO.findByProviderIdAndDate(id, date);
     }
 
