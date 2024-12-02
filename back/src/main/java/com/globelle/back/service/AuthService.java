@@ -11,12 +11,10 @@ import com.globelle.back.config.JwtTokenProvider;
 import com.globelle.back.dto.LoginDto;
 import com.globelle.back.dto.RegisterDto;
 import com.globelle.back.model.User;
-import com.globelle.back.dao.UserDao;
+import com.globelle.back.dao.UserDAO;
 import com.globelle.back.model.Role;
 import com.globelle.back.dao.RoleDao;
 import com.globelle.back.model.RoleEnum;
-
-import java.util.Set;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Service
@@ -28,7 +26,7 @@ public class AuthService {
     private JwtTokenProvider jwtTokenProvider;
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
 
     @Autowired
     private RoleDao roleDao;
@@ -37,7 +35,7 @@ public class AuthService {
 
         // 01 - AuthenticationManager is used to authenticate the user
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginDto.getUsername(),
+                loginDto.getEmail(),
                 loginDto.getPassword()
         ));
 
@@ -52,7 +50,7 @@ public class AuthService {
         return token;
     }
 
-    public User register(RegisterDto registerDto) {
+    public User register(RegisterDto registerDto, int idRole) {
         // Create new user from register DTO
         User user = new User();
         user.setUsername(registerDto.getUsername());
@@ -67,7 +65,8 @@ public class AuthService {
         User savedUser = userDao.save(user);
 
         // Set user role by default
-        Role userRole = roleDao.findByName(RoleEnum.USER.toString()).get();
+        Role userRole = roleDao.findByName(idRole==1 ? RoleEnum.PROVIDER.toString() : RoleEnum.CLIENT.toString()).get();
+
         savedUser.getRoles().add(userRole);
         savedUser = userDao.save(savedUser);
 

@@ -36,8 +36,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        //http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll()).csrf().disable().cors();
-
+        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll()).csrf().disable().cors();
+/*
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
                     authorize.requestMatchers("/api/auth/**").permitAll();
@@ -49,7 +49,7 @@ public class SecurityConfig {
                 .authenticationEntryPoint(authenticationEntryPoint));
 
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-
+*/
         return http.build();
     }
 

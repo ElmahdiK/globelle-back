@@ -1,19 +1,9 @@
 package com.globelle.back.model;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +16,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
 
     @Column(nullable = false, unique = true)
@@ -44,5 +35,64 @@ public class User implements Serializable {
     )
     private Set<Role> roles = new HashSet<>();
 
+    @OneToMany
+    private List<Favorite> favoritesList = new ArrayList<>();
+
+    @Column
+    private String languages;
+
+    @Column
+    private String description;
+
+    @Column
+    private float note;
+
+    @Column
+    private int nbOpinions = 0;
+
+    @Column
+    private String dispo;
+
+    @OneToMany
+    private List<BeautyService> beautyServiceList = new ArrayList<>();
+
+    @OneToMany
+    private List<Opinion> opinionList = new ArrayList<>();
+
+    @Column
+    private String name;
+
+    @Column
+    private String surname;
+
+
+    @Column
+    private String postalCode;
+
+    @Column
+    private String city;
+
+    @Column
+    private String address;
+
+    @Column
+    private String telephone;
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt = new Date();
+
+    @Column
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt = new Date();
+
+    @Column(nullable = false)
+    private boolean blacklisted;
+
+    @Column
+    private String urlImage;
+
+    @OneToMany
+    private List<Reservation> reservationsList = new ArrayList<>();
 
 }

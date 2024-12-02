@@ -27,7 +27,7 @@ public class BeautyService implements Serializable {
     private Categorie categoryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "provider_id")
+    @JoinColumn(name = "user_id")
     @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
-    private Provider providerId;
+    private User userId;
 }

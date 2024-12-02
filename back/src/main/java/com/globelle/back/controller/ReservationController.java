@@ -1,7 +1,5 @@
 package com.globelle.back.controller;
 
-import com.globelle.back.model.BeautyService;
-import com.globelle.back.model.Provider;
 import com.globelle.back.model.Reservation;
 import com.globelle.back.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,9 +29,9 @@ public class ReservationController {
         return r.get();
     }
 
-    // ex: http://localhost:8080/reservations/provider/0
-    @GetMapping("/provider/{id}")
-    public List<String> getReservationByProviderId(@PathVariable Integer id) throws ResponseStatusException {
+    // ex: http://localhost:8080/reservations/users/0
+    @GetMapping("/users/{id}")
+    public List<String> getReservationByUserId(@PathVariable Integer id) throws ResponseStatusException {
         List<String> r = reservationService.getReservationById(id);
         if (r.isEmpty()) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");

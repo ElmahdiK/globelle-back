@@ -11,14 +11,14 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-import com.globelle.back.dao.UserDao;
+import com.globelle.back.dao.UserDAO;
 import com.globelle.back.model.User;
 
 @Component
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private UserDAO userDao;
 
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {

@@ -3,11 +3,7 @@ package com.globelle.back.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.globelle.back.dto.AuthResponseDto;
 import com.globelle.back.dto.LoginDto;
@@ -42,9 +38,17 @@ public class AuthController {
     }
 
     // Build Register REST API
+    /*
     @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody RegisterDto registerDto){
         User user = authService.register(registerDto);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
+    }
+     */
+
+    @PostMapping("/register/{idRole}")
+    public ResponseEntity<User> register(@RequestBody RegisterDto registerDto, @PathVariable int idRole){
+        User user = authService.register(registerDto, idRole);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }
