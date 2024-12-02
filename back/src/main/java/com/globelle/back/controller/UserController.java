@@ -57,15 +57,27 @@ public class UserController {
                 .body(cNew.getId());
     }
 
-    @GetMapping(value = {"/{clientId}/reservations/{id}"})
-    public Reservation getReservationByReservationIdAndClientId(@PathVariable Integer clientId, @PathVariable Integer id) {
-        return reservationService.getReservationByReservationIdAndClientId(clientId, id);
+    @GetMapping(value = {"/{userId}/reservations/{id}"})
+    public Reservation getReservationByReservationIdAndCUserId(@PathVariable Integer userId, @PathVariable Integer id) {
+        return reservationService.getReservationByReservationIdAndUserId(userId, id);
     }
 
-    //http://localhost:8080/clients/2/reservations
+    //http://localhost:8080/users/2/reservations
     @GetMapping(value = {"/{id}/reservations"})
     public List<Reservation> getReservationsClientId(@PathVariable int id) {
-        return reservationService.getReservationsByClientId(id);
+        return reservationService.getReservationsByUserId(id);
+    }
+
+    @GetMapping(value = {"/1/{id}/reservations/date/{date}"})
+    // http://localhost:8080/users/1/1/reservations/date/2024-11-30
+    public List<String> getReservationByProviderIdAndDate(@PathVariable int id, @PathVariable String date) {
+        List<String> r = reservationService.getReservationByProviderIdAndDate(id, date);
+        List<String> horaires = new ArrayList<>();
+        System.out.println(r);
+        if (!r.isEmpty()) {
+            for (String datetime : r) horaires.add(datetime.split(" ")[1]);
+        }
+        return horaires;
     }
 
     @PutMapping("/{id}")
@@ -85,57 +97,9 @@ public class UserController {
         return userService.getUserByBeautyServicesName(serviceName);
     }
 
-    /*
-
-    @GetMapping(value = {"/{providerId}/reservations/{id}"})
-    public Reservation getReservationByReservationIdAndProviderId(@PathVariable Integer providerId, @PathVariable Integer id) {
-        return reservationService.getReservationByReservationIdAndProviderId(providerId, id);
-    }
-
-    //http://localhost:8080/providers/2/reservations
-    @GetMapping(value = {"/{id}/reservations"})
-    public List<Reservation> getReservationsProviderId(@PathVariable int id) {
-        return reservationService.getReservationsByProviderId(id);
-    }
-
-    @GetMapping(value = {"/{id}/reservations/date/{date}"})
-    // http://localhost:8080/providers/1/reservations/date/2024-11-30
-    public List<String> getReservationByProviderIdAndDate(@PathVariable int id, @PathVariable String date) {
-        List<String> r = reservationService.getReservationByIdAndDate(id, date);
-        List<String> horaires = new ArrayList<>();
-        System.out.println(r);
-        if (!r.isEmpty()) {
-            for (String datetime : r) horaires.add(datetime.split(" ")[1]);
-        }
-        return horaires;
-    }
-
-    @GetMapping(value = {"/{id}/services", "/{id}/services/"})
+    @GetMapping(value = {"1/{id}/services", "1/{id}/services/"})
     public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) {
-        List<BeautyService> bs = beautyServiceService.getAllBeautyServicesByProviderId(id);
-        return bs;
+        return beautyServiceService.getAllBeautyServicesByProviderId(id);
     }
 
-
-    @DeleteMapping("/{id}")
-    public void deleteProvider(@PathVariable int id) {
-        userService.deleteProvider(id);
-    }
-
-    @PostMapping("")
-    public ResponseEntity<Integer> insertProvider(@RequestBody Provider p) {
-        Provider pNew = userService.insertProvider(p);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .body(pNew.getId());
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Integer> updateProvider(@PathVariable int id, @RequestBody Provider p) {
-        Provider pUpdate = userService.updateProvider(p, id);
-        return ResponseEntity
-                .status(HttpStatus.NO_CONTENT)
-                .body(pUpdate.getId());
-    }
-*/
 }

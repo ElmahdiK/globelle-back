@@ -13,19 +13,13 @@ public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
     List<String> findByProviderId(int providerId);
 
     // SELECT r.reservation_date FROM Reservation r WHERE r.provider_id = "1" AND r.reservation_date = "2024-11-30"
-    @Query(value = "SELECT r.reservation_date FROM Reservation r WHERE r.provider_id = :providerId AND r.reservation_date LIKE :reservationDate%", nativeQuery = true)
+    @Query(value = "SELECT r.reservation_date FROM Reservation r JOIN user_role r ON r.user_id = u.id WHERE r.provider_id = :providerId AND r.role_id = 1 AND r.reservation_date LIKE :reservationDate%", nativeQuery = true)
     List<String> findByProviderIdAndDate(int providerId, String reservationDate);
 
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN user_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.user_id = :userId", nativeQuery = true)
+    List<Reservation> findReservationsByUserId(@Param("providerId") int userId);
 
-    @Query(value = "SELECT r.* FROM reservation r INNER JOIN provider_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.provider_id = :providerId", nativeQuery = true)
-    List<Reservation> findReservationsByProviderId(@Param("providerId") int providerId);
+    @Query(value = "SELECT r.* FROM reservation r INNER JOIN user_reservations_list lr ON r.id = lr.reservations_list_id WHERE r.user_id = :userId AND r.id = :id", nativeQuery = true)
+    Reservation findReservationByReservationIdAndUserId(@Param("providerId") int userId, @Param("id") int id);
 
-    @Query(value = "SELECT r.* FROM reservation r INNER JOIN provider_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.provider_id = :providerId AND r.id = :id", nativeQuery = true)
-    Reservation findReservationByReservationIdAndProviderId(@Param("providerId") int providerId, @Param("id") int id);
-
-    @Query(value = "SELECT r.* FROM reservation r INNER JOIN client_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.client_id = :clientId", nativeQuery = true)
-    List<Reservation> findReservationsByClientId(@Param("clientId")int clientId);
-
-    @Query(value = "SELECT r.* FROM reservation r INNER JOIN client_reservations_list lr ON r.id = lr.reservations_list_id WHERE lr.client_id = :clientId AND r.id = :id", nativeQuery = true)
-    Reservation findReservationByReservationIdAndClientId(@Param("clientId")Integer clientId, @Param("id") Integer id);
 }

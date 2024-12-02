@@ -26,7 +26,7 @@ public class ReservationService {
         return reservationDAO.findByProviderId(id);
     }
 
-    public List<String> getReservationByIdAndDate(int id, String date) {
+    public List<String> getReservationByProviderIdAndDate(int id, String date) {
         return reservationDAO.findByProviderIdAndDate(id, date);
     }
 
@@ -46,20 +46,12 @@ public class ReservationService {
     }
 
 
-    public List<Reservation> getReservationsByProviderId(Integer providerId) {
-        return reservationDAO.findReservationsByProviderId(providerId);
+    public List<Reservation> getReservationsByUserId(Integer userId) {
+        return reservationDAO.findReservationsByUserId(userId);
     }
 
-    public Reservation getReservationByReservationIdAndProviderId(Integer providerId, Integer id) {
-        return reservationDAO.findReservationByReservationIdAndProviderId(providerId, id);
+    public Reservation getReservationByReservationIdAndUserId(Integer userId, Integer id) {
+        return reservationDAO.findReservationByReservationIdAndUserId(userId, id);
     }
 
-    public List<Reservation> getReservationsByClientId(Integer clientId) {
-        return reservationDAO.findReservationsByClientId(clientId);
-    }
-
-    public Reservation getReservationByReservationIdAndClientId(Integer clientId, Integer id) {
-        return reservationDAO.findReservationByReservationIdAndClientId(clientId, id);
-
-    }
 }
