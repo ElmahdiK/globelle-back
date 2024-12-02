@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 //@SuperBuilder
 @Data
-public class Client extends User  implements Serializable {
+public class Client extends Userr implements Serializable {
 
     @OneToMany
     private List<Favorite> favoritesList = new ArrayList<>();

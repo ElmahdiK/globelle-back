@@ -56,7 +56,7 @@ public class ProviderController {
     }
 
     @GetMapping(value = {"/{id}/reservations/date/{date}"})
-    //http://localhost:8080/providers/2/reservations/date/20241201
+    // http://localhost:8080/providers/1/reservations/date/2024-11-30
     public List<String> getReservationByProviderIdAndDate(@PathVariable int id, @PathVariable String date) {
         List<String> r = reservationService.getReservationByIdAndDate(id, date);
         List<String> horaires = new ArrayList<>();
