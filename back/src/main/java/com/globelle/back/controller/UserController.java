@@ -19,11 +19,10 @@ import java.util.Optional;
 @RequestMapping("/users")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UserController {
+
+    // PARTIE : userService
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private ReservationService reservationService;
 
     // http://localhost:8080/users/1
     @GetMapping(value = {"/{id}", "/{id}/"})
@@ -38,11 +37,16 @@ public class UserController {
         return userService.getAllUsersProviders();
     }
 
+    // PARTIE : reservationService
+    @Autowired
+    private ReservationService reservationService;
+
     // http://localhost:8080/users/1/2/reservations
     @GetMapping(value = {"/1/{id}/reservations"})
     public List<Reservation> getReservationsProviderId(@PathVariable int id) {
         return reservationService.getReservationsByProviderId(id);
     }
+
     // http://localhost:8080/users/2/1/reservations
     @GetMapping(value = {"/2/{id}/reservations"})
     public List<Reservation> getReservationsClientId(@PathVariable int id) {
@@ -61,6 +65,7 @@ public class UserController {
         return horaires;
     }
 
+    // PARTIE : beautyServiceService
     @Autowired
     private BeautyServiceService beautyServiceService;
 
@@ -70,12 +75,13 @@ public class UserController {
         return userService.getUserByBeautyServicesName(serviceName);
     }
 
+    // http://localhost:8080/users/1/1/services
     @GetMapping(value = {"1/{id}/services", "1/{id}/services/"})
     public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) {
         return beautyServiceService.getAllBeautyServicesByUserId(id);
     }
 
-
+    // Delete + Post + Put => Mapping
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);
