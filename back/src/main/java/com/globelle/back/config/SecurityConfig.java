@@ -29,7 +29,7 @@ public class SecurityConfig {
     private JwtAuthenticationFilter authenticationFilter;
 
     @Bean
-    public static PasswordEncoder passwordEncoder(){
+    public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
@@ -40,14 +40,16 @@ public class SecurityConfig {
 
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/api/users").authenticated();
-                    authorize.requestMatchers("/api/users/**").authenticated();
+                    authorize.requestMatchers("/users/*/*/reservations").authenticated();
+                    authorize.requestMatchers("/users/*/*/reservations/**").authenticated();
+                    authorize.requestMatchers("/reservations").authenticated();
+                    authorize.requestMatchers("/reservations/**").authenticated();
 
                     authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
                     authorize.anyRequest().permitAll();
                 }).httpBasic(Customizer.withDefaults());
 
-        http.exceptionHandling( exception -> exception
+        http.exceptionHandling(exception -> exception
                 .authenticationEntryPoint(authenticationEntryPoint));
 
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
