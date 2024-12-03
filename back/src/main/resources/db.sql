@@ -40,13 +40,13 @@ INSERT INTO beauty_service (id, name, price, category_id, user_id) VALUES
 (4, 'Hair coloring', '70.00', 2, 2);
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (1, 1, 2, '2024-11-29');
+VALUES (1, 1, 2, '2024-11-29 10:10');
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (2, 2, 1, '2024-11-30');
+VALUES (2, 2, 1, '2024-11-30 10:15');
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (3, 1, 1, '2024-12-01');
+VALUES (3, 1, 1, '2024-12-01 10:20');
 
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (4, 1);
