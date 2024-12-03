@@ -21,4 +21,5 @@ public class CategorieService {
     public Optional<Categorie> getCategorie(int id) {
         return categorieDAO.findById(id);
     }
+
 }

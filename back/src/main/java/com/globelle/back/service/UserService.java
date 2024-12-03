@@ -14,16 +14,12 @@ public class UserService {
     @Autowired
     private UserDAO userDAO;
 
-    public List<User> getAllUsers(){
-        return (List<User>) userDAO.findAll();
-    }
-
     public Optional<User> getUser(int id) {
         return userDAO.findById(id);
     }
 
     public List<User> getAllUsersProviders() {
-        return (List<User>) userDAO.findAllProviders();
+        return userDAO.findAllProviders();
     }
 
     public List<User> getUserByBeautyServicesName(String name) {

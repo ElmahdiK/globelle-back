@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 
 // See: https://docs.spring.io/spring-data/jpa/reference/jpa/query-methods.html
 public interface UserDAO extends CrudRepository<User, Integer> {
+
     Optional<User> findByUsername(String username);
     Optional<User> findByUsernameOrEmail(String username, String email);
 
