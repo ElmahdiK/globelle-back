@@ -25,12 +25,12 @@ VALUES
 
 
 INSERT INTO categorie (id, categorie_service, url_image) VALUES
-(1, 'Manucure', ''),
-(2, 'Épilation', ''),
-(3, 'Coiffure', ''),
-(4, 'Maquillage', ''),
-(5, 'Extension de cils', ''),
-(6, 'Soin', '');
+(1, 'Manucure', 'images/categories/Manucure_Light_Mode.webp'),
+(2, 'Épilation', 'images/categories/Epilation_Light_Mode.webp'),
+(3, 'Coiffure', 'images/categories/Coiffure_Light_Mode.webp'),
+(4, 'Maquillage', 'images/categories/Maquillage_Light_Mode.webp'),
+(5, 'Extension de cils', 'images/categories/Extension_de_cils_Light_Mode.webp'),
+(6, 'Soin', 'images/categories/Soins_Light_Mode.webp');
 
 
 INSERT INTO beauty_service (id, name, price, category_id, user_id) VALUES
