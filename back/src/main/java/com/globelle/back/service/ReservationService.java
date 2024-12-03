@@ -53,8 +53,4 @@ public class ReservationService {
         return reservationDAO.findReservationsByClientId(userId);
     }
 
-    public Reservation getReservationByReservationIdAndUserId(Integer userId, Integer id) {
-        return reservationDAO.findReservationByReservationIdAndUserId(userId, id);
-    }
-
 }
