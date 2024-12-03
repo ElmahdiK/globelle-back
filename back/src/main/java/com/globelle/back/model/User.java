@@ -40,24 +40,6 @@ public class User implements Serializable, UserDetails {
     private Set<Role> roles = new HashSet<>();
 
     @Column
-    private String languages;
-
-    @Column
-    private String description;
-
-    @Column
-    private float note;
-
-    @Column
-    private int nbOpinions = 0;
-
-    @Column
-    private String dispo;
-
-    @OneToMany
-    private List<BeautyService> beautyServiceList = new ArrayList<>();
-
-    @Column
     private String lastname;
 
     @Column
@@ -83,6 +65,21 @@ public class User implements Serializable, UserDetails {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt = new Date();
 
+    @Column
+    private String languages;
+
+    @Column
+    private String description;
+
+    @Column
+    private float note;
+
+    @Column
+    private int nbOpinions = 0;
+
+    @Column
+    private String dispo;
+
     @Column(nullable = false)
     private boolean blacklisted;
 
@@ -95,4 +92,8 @@ public class User implements Serializable, UserDetails {
                 .map((role) -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
     }
+
+    @OneToMany
+    private List<BeautyService> beautyServiceList = new ArrayList<>();
+
 }
