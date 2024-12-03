@@ -17,6 +17,9 @@ import com.globelle.back.dao.RoleDao;
 import com.globelle.back.model.RoleEnum;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.Optional;
+
 @Service
 public class AuthService {
 
@@ -46,6 +49,9 @@ public class AuthService {
         // 03 - Generate the token based on username and secret key
         String token = jwtTokenProvider.generateToken(authentication);
 
+        Optional<User> user = userDao.findByUsername(authentication.getName());
+        System.out.println(user);
+
         // 04 - Return the token to controller
         return token;
     }
@@ -55,6 +61,13 @@ public class AuthService {
         User user = new User();
         user.setUsername(registerDto.getUsername());
         user.setEmail(registerDto.getEmail());
+
+        user.setLastname(registerDto.getLastname());
+        user.setFirstname(registerDto.getFirstname());
+        user.setPostalCode(registerDto.getPostalCode());
+        user.setCity(registerDto.getCity());
+        user.setAddress(registerDto.getAddress());
+        user.setTelephone(registerDto.getTelephone());
 
         // Encode password using BCrypt
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();

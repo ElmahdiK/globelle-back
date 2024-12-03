@@ -2,17 +2,21 @@ package com.globelle.back.model;
 
 import java.io.Serializable;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements Serializable {
+public class User implements Serializable, UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,9 +39,6 @@ public class User implements Serializable {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @OneToMany
-    private List<Favorite> favoritesList = new ArrayList<>();
-
     @Column
     private String languages;
 
@@ -56,14 +57,11 @@ public class User implements Serializable {
     @OneToMany
     private List<BeautyService> beautyServiceList = new ArrayList<>();
 
-    @OneToMany
-    private List<Opinion> opinionList = new ArrayList<>();
+    @Column
+    private String lastname;
 
     @Column
-    private String name;
-
-    @Column
-    private String surname;
+    private String firstname;
 
 
     @Column
@@ -95,4 +93,10 @@ public class User implements Serializable {
     @OneToMany
     private List<Reservation> reservationsList = new ArrayList<>();
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return this.getRoles().stream()
+                .map((role) -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toSet());
+    }
 }

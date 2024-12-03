@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.crypto.SecretKey;
 
+import com.globelle.back.model.User;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -29,11 +30,17 @@ public class JwtTokenProvider {
                 .map(authority -> authority.getAuthority())
                 .toArray(String[]::new);
 
+        User user = (User) authentication.getPrincipal();
+
         String token = Jwts.builder()
                 .subject(username)
                 .issuedAt(new Date())
                 .expiration(expireDate)
-                .claim("roles", roles) // Add roles to token claims
+                .claim("id", user.getId())
+                .claim("username", user.getUsername())
+                .claim("firstname", user.getFirstname())
+                .claim("lastname", user.getLastname())
+                .claim("role", roles[0]) // Add roles to token claims
                 .signWith(key(), SignatureAlgorithm.HS256)
                 .compact();
 

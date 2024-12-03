@@ -38,14 +38,6 @@ public class AuthController {
     }
 
     // Build Register REST API
-    /*
-    @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody RegisterDto registerDto){
-        User user = authService.register(registerDto);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }
-     */
-
     @PostMapping("/register/{idRole}")
     public ResponseEntity<User> register(@RequestBody RegisterDto registerDto, @PathVariable int idRole){
         User user = authService.register(registerDto, idRole);
