@@ -18,20 +18,18 @@ public class ReservationController {
     @Autowired
     private ReservationService reservationService;
 
-    // http://localhost:8080/reservations
     @GetMapping(value = {"", "/"})
     public List<Reservation> getAllReservations() {
         return reservationService.getAllReservations();
     }
 
-    // http://localhost:8080/reservations/1
     @GetMapping(value = {"/{id}", "/{id}/"})
     public Reservation getReservationById(@PathVariable Integer id) {
         Optional<Reservation> r = reservationService.getReservation(id);
-        return r.orElse(null);
+        return r.get();
     }
 
-    // http://localhost:8080/reservations/users/1
+    // ex: http://localhost:8080/reservations/users/0
     @GetMapping("/users/{id}")
     public List<String> getReservationByUserId(@PathVariable Integer id) throws ResponseStatusException {
         List<String> r = reservationService.getReservationById(id);
@@ -41,7 +39,7 @@ public class ReservationController {
         return r;
     }
 
-    // Delete + Post + Put
+
     @DeleteMapping("/{id}")
     public void deleteReservation(@PathVariable int id) {
         reservationService.deleteReservation(id);
@@ -62,5 +60,7 @@ public class ReservationController {
                 .status(HttpStatus.NO_CONTENT)
                 .body(rUpdate.getId());
     }
+
+
 
 }

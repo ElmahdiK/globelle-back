@@ -17,20 +17,18 @@ public class BeautyServiceController {
     @Autowired
     private BeautyServiceService beautyServiceService;
 
-    // http://localhost:8080/services
     @GetMapping(value = {"", "/"})
     public List<BeautyService> getAllBeautyServices() {
         return beautyServiceService.getAllBeautyServices();
     }
 
-    // http://localhost:8080/services/1
     @GetMapping(value = {"/{id}", "/{id}/"})
     public BeautyService getBeautyServiceById(@PathVariable int id) {
         Optional<BeautyService> b = beautyServiceService.getBeautyService(id);
-        return b.orElse(null);
+        return b.get();
     }
 
-    // Delete + Post + Put
+
     @DeleteMapping("/{id}")
     public void deleteBeautyService(@PathVariable int id) {
         beautyServiceService.deleteBeautyService(id);
@@ -51,5 +49,6 @@ public class BeautyServiceController {
                 .status(HttpStatus.NO_CONTENT)
                 .body(bsUpdate.getId());
     }
+
 
 }

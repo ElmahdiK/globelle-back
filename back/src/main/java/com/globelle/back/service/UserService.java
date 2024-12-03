@@ -22,9 +22,15 @@ public class UserService {
         return userDAO.findAllProviders();
     }
 
+
     public List<User> getUserByBeautyServicesName(String name) {
         return userDAO.findUserByBeautyServicesName(name);
     }
+
+//    public Provider getProviderById(int id) {
+//        Optional<Provider> p = providerDAO.findById(id);
+//        return p.orElse(null);
+//    }
 
     public User insertUser(User p) {
         p.setId(null);
