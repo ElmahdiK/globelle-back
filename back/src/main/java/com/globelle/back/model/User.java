@@ -63,7 +63,6 @@ public class User implements Serializable, UserDetails {
     @Column
     private String firstname;
 
-
     @Column
     private String postalCode;
 

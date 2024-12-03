@@ -4,7 +4,6 @@ package com.globelle.back.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import lombok.experimental.SuperBuilder;
 import java.io.Serializable;
 
 @Entity
@@ -23,11 +22,11 @@ public class BeautyService implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")
-    @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
+    @JsonIgnore // Cette annotation empêche la sérialisation de Table
     private Categorie categoryId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonIgnore  // Cette annotation empêche la sérialisation de Table2
+    @JsonIgnore
     private User userId;
 }
