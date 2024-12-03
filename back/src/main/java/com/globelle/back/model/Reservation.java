@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Data
@@ -18,4 +19,5 @@ public class Reservation implements Serializable {
     private Integer clientId;
 
     private Integer providerId;
+
 }

@@ -22,7 +22,7 @@ public class BeautyServiceService {
         return beautyServiceDAO.findById(id);
     }
 
-    public List<BeautyService> getAllBeautyServicesByProviderId(Integer id) {
+    public List<BeautyService> getAllBeautyServicesByUserId(Integer id) {
         return beautyServiceDAO.findByProviderId(id);
     }
 

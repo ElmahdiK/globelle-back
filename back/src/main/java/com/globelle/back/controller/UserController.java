@@ -99,7 +99,7 @@ public class UserController {
 
     @GetMapping(value = {"1/{id}/services", "1/{id}/services/"})
     public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) {
-        return beautyServiceService.getAllBeautyServicesByProviderId(id);
+        return beautyServiceService.getAllBeautyServicesByUserId(id);
     }
 
 }
