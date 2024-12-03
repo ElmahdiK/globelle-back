@@ -63,10 +63,16 @@ public class UserController {
     }
 
     //http://localhost:8080/users/2/reservations
-    @GetMapping(value = {"/{id}/reservations"})
-    public List<Reservation> getReservationsClientId(@PathVariable int id) {
-        return reservationService.getReservationsByUserId(id);
+    @GetMapping(value = {"/1/{id}/reservations"})
+    public List<Reservation> getReservationsProviderId(@PathVariable int id) {
+        return reservationService.getReservationsByProviderId(id);
     }
+
+    @GetMapping(value = {"/2/{id}/reservations"})
+    public List<Reservation> getReservationsClientId(@PathVariable int id) {
+        return reservationService.getReservationsByClientId(id);
+    }
+
 
     @GetMapping(value = {"/1/{id}/reservations/date/{date}"})
     // http://localhost:8080/users/1/1/reservations/date/2024-11-30

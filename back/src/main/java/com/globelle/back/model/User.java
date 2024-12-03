@@ -90,9 +90,6 @@ public class User implements Serializable, UserDetails {
     @Column
     private String urlImage;
 
-    @OneToMany
-    private List<Reservation> reservationsList = new ArrayList<>();
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return this.getRoles().stream()
