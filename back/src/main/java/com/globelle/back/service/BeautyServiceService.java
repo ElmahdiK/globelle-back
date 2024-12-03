@@ -14,7 +14,7 @@ public class BeautyServiceService {
     @Autowired
     private BeautyServiceDAO beautyServiceDAO;
 
-    public List<BeautyService> getAllBeautyServices(){
+    public List<BeautyService> getAllBeautyServices() {
         return (List<BeautyService>) beautyServiceDAO.findAll();
     }
 
@@ -34,7 +34,6 @@ public class BeautyServiceService {
         bs.setId(null);
         return beautyServiceDAO.save(bs);
     }
-
 
     public BeautyService updateBeautyService(BeautyService bs, int id) {
         bs.setId(id);

@@ -15,16 +15,19 @@ public class CategorieController {
     @Autowired
     private CategorieService categorieService;
 
+    // http://localhost:8080/categories
     @GetMapping(value = {"", "/"})
     public List<Categorie> getAllCategories() {
         return categorieService.getAllCategories();
     }
 
+    // http://localhost:8080/categories/1
     @GetMapping(value = {"/{id}", "/{id}/"})
     public Categorie getCategorieById(@PathVariable int id) {
         Optional<Categorie> c = categorieService.getCategorie(id);
-        return c.get();
+        return c.orElse(null);
     }
+
 }
 
 

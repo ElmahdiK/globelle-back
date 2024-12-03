@@ -36,20 +36,22 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll()).csrf().disable().cors();
-/*
+        // http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll()).csrf().disable().cors();
+
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
-                    authorize.requestMatchers("/api/auth/**").permitAll();
+                    authorize.requestMatchers("/api/users").authenticated();
+                    authorize.requestMatchers("/api/users/**").authenticated();
+
                     authorize.requestMatchers(HttpMethod.OPTIONS, "/**").permitAll();
-                    authorize.anyRequest().authenticated();
+                    authorize.anyRequest().permitAll();
                 }).httpBasic(Customizer.withDefaults());
 
         http.exceptionHandling( exception -> exception
                 .authenticationEntryPoint(authenticationEntryPoint));
 
         http.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
-*/
+
         return http.build();
     }
 

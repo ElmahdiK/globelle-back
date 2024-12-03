@@ -78,7 +78,7 @@ public class AuthService {
         User savedUser = userDao.save(user);
 
         // Set user role by default
-        Role userRole = roleqDao.findByName(idRole==1 ? RoleEnum.PROVIDER.toString() : RoleEnum.CLIENT.toString()).get();
+        Role userRole = roleDao.findByName(idRole==1 ? RoleEnum.PROVIDER.toString() : RoleEnum.CLIENT.toString()).get();
 
         savedUser.getRoles().add(userRole);
         savedUser = userDao.save(savedUser);

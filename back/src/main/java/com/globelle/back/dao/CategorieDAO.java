@@ -4,6 +4,4 @@ import com.globelle.back.model.Categorie;
 import org.springframework.data.repository.CrudRepository;
 
 public interface CategorieDAO extends CrudRepository<Categorie, Integer> {
-
-
 }
