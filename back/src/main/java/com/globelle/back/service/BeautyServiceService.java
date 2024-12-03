@@ -35,6 +35,7 @@ public class BeautyServiceService {
         return beautyServiceDAO.save(bs);
     }
 
+
     public BeautyService updateBeautyService(BeautyService bs, int id) {
         bs.setId(id);
         return beautyServiceDAO.save(bs);

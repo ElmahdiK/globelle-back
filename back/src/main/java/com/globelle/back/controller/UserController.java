@@ -81,7 +81,7 @@ public class UserController {
         return beautyServiceService.getAllBeautyServicesByUserId(id);
     }
 
-    // Delete + Post + Put
+    // Delete + Post + Put => Mapping
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteUser(id);

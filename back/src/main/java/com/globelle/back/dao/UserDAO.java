@@ -21,4 +21,7 @@ public interface UserDAO extends CrudRepository<User, Integer> {
     @Query(value = "SELECT u.* FROM user u INNER JOIN beauty_service b ON b.user_id = u.id WHERE b.name = :name", nativeQuery = true)
     List<User> findUserByBeautyServicesName(@Param("name") String name);
 
+
+
+
 }
