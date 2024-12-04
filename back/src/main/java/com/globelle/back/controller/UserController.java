@@ -95,15 +95,6 @@ public class UserController {
                 .body(cNew.getId());
     }
 
-    /*
-        @PutMapping("/{id}")
-        public ResponseEntity<Integer> updateUser(@PathVariable int id, @RequestBody User c) {
-            User cUpdate = userService.updateUser(c, id);
-            return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
-                    .body(cUpdate.getId());
-        }*/
-
     @PutMapping("/{id}")
     public ResponseEntity<Integer> updateUser(@PathVariable int id, @RequestBody User c) {
         String cPassword = c.getPassword();

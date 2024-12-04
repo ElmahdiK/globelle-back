@@ -10,12 +10,11 @@ import java.io.Serializable;
 public class Categorie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(nullable = false)
     private String categorieService;
 
-    @Column(nullable = false)
     private String urlImage;
 }

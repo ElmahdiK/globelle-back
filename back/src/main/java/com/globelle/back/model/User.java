@@ -23,13 +23,10 @@ public class User implements Serializable, UserDetails {
 
     private Integer id;
 
-    @Column
     private String username;
 
-    @Column
     private String password;
 
-    @Column
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -39,51 +36,36 @@ public class User implements Serializable, UserDetails {
     )
     private Set<Role> roles = new HashSet<>();
 
-    @Column
     private String lastname;
 
-    @Column
     private String firstname;
 
-    @Column
     private String postalCode;
 
-    @Column
     private String city;
 
-    @Column
     private String address;
 
-    @Column
     private String telephone;
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
 
-    @Column
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt = new Date();
 
-    @Column
     private String languages;
 
-    @Column
     private String description;
 
-    @Column
     private float note;
 
-    @Column
     private int nbOpinions = 0;
 
-    @Column
     private String dispo;
 
-    @Column(nullable = false)
     private boolean blacklisted;
 
-    @Column
     private String urlImage;
 
     @Override
