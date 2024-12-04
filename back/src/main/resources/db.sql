@@ -64,14 +64,13 @@ VALUES
 INSERT INTO user
 (id,  firstname, lastname, username, email, password, postal_code, city, address, telephone, created_at, updated_at, blacklisted, url_image)
 VALUES
-(30, 'Alice', 'Brown','BrownU', 'alicebrown@example.com', 'password123', '75001', 'Paris', '5 rue de Paris', '0123456789', NOW(), NOW(), FALSE, '');
+(30, 'Alice', 'Brown','Alice-Brown', 'alice@brown.com', 'password123', '75001', 'Paris', '5 rue de Paris', '0123456789', NOW(), NOW(), FALSE, '');
 
 -- Insérer un autre client
 INSERT INTO user
 (id,  firstname, lastname, username, email, password, postal_code, city, address, telephone, created_at, updated_at, blacklisted, url_image)
 VALUES
-(31, 'Bob', 'Green','GreenU', 'bobgreen@example.com', 'password456', '75002', 'Paris', '10 rue de Paris', '0987654321', NOW(), NOW(), FALSE, '');
-
+(31, 'Bob', 'Green','Bob-Green', 'bob@green.com', 'password456', '75002', 'Paris', '10 rue de Paris', '0987654321', NOW(), NOW(), FALSE, '');
 
 INSERT INTO categorie (id, categorie_service, url_image) VALUES
 (1, 'Manucure', 'images/categories/Manucure_Light_Mode.webp'),
@@ -81,21 +80,28 @@ INSERT INTO categorie (id, categorie_service, url_image) VALUES
 (5, 'Extension de cils', 'images/categories/Extension_de_cils_Light_Mode.webp'),
 (6, 'Soin', 'images/categories/Soins_Light_Mode.webp');
 
-
 INSERT INTO beauty_service (id, name, price, category_id, user_id) VALUES
-(1, 'Manicure', '25.00', 1, 1),
-(2, 'Pedicure', '30.00', 1, 1),
-(3, 'Haircut', '40.00',  2, 2),
-(4, 'Hair coloring', '70.00', 2, 2);
+(1, 'Manucure', '25.00', 1, 3),
+(2, 'Manucure', '30.00', 1, 4),
+(3, 'Manucure', '30.00', 1, 5),
+(4, 'Coiffure', '30.00', 3, 6),
+(5, 'Coiffure', '40.00',  3, 7),
+(6, 'Coiffure', '10.00',  3, 8),
+(7, 'Maquillage', '10.00',  4, 9),
+(8, 'Maquillage', '100.00',  4, 10),
+(9, 'Extension de cils', '40.00',  5, 11),
+(10, 'Épilation', '50.00',  2, 12),
+(11, 'Épilation', '50.00',  2, 13),
+(12, 'Soin', '50.00',  2, 14);
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (1, 1, 2, '2024-11-29 10:10');
+VALUES (1, 30, 3, '2024-11-29 10:10');
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (2, 2, 1, '2024-11-30 10:15');
+VALUES (2, 31, 4, '2024-11-30 10:15');
 
 INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (3, 1, 1, '2024-12-01 10:20');
+VALUES (3, 31, 5, '2024-12-01 10:20');
 
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (4, 1);

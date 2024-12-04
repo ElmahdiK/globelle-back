@@ -69,7 +69,7 @@ public class UserController {
     @Autowired
     private BeautyServiceService beautyServiceService;
 
-    // http://localhost:8080/users/1/search?service=manicure
+    // http://localhost:8080/users/1/search?service=manucure
     @GetMapping(value = {"1/search"})
     public List<User> getProviderByBeautyServicesName(@RequestParam("service") String serviceName) {
         return userService.getUserByBeautyServicesName(serviceName);
