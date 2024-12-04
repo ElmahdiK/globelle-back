@@ -31,8 +31,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
         // http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest().permitAll()).csrf().disable().cors();
-
-        http.csrf(csrf -> csrf.disable())
+        http.cors().and().csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests((authorize) -> {
                     authorize.requestMatchers("/users/*/*/reservations").authenticated();
                     authorize.requestMatchers("/users/*/*/reservations/**").authenticated();
