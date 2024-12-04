@@ -23,13 +23,13 @@ public class User implements Serializable, UserDetails {
 
     private Integer id;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String username;
 
-    @Column(nullable = false)
+    @Column
     private String password;
 
-    @Column(nullable = false, unique = true)
+    @Column
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -44,7 +44,7 @@ public class User implements Serializable, UserDetails {
 
     @Column
     private String firstname;
-    
+
     @Column
     private String postalCode;
 

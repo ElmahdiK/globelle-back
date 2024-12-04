@@ -95,12 +95,33 @@ public class UserController {
                 .body(cNew.getId());
     }
 
+    /*
+        @PutMapping("/{id}")
+        public ResponseEntity<Integer> updateUser(@PathVariable int id, @RequestBody User c) {
+            User cUpdate = userService.updateUser(c, id);
+            return ResponseEntity
+                    .status(HttpStatus.NO_CONTENT)
+                    .body(cUpdate.getId());
+        }*/
+
     @PutMapping("/{id}")
     public ResponseEntity<Integer> updateUser(@PathVariable int id, @RequestBody User c) {
+        String cPassword = c.getPassword();
+        String cEmail = c.getEmail();
+        String cUsername = c.getUsername();
         User cUpdate = userService.updateUser(c, id);
+
+        if (cUpdate.getPassword() == null) {
+            cUpdate.setPassword(cPassword);
+        }
+        if (cUpdate.getEmail() == null) {
+            cUpdate.setEmail(cEmail);
+        }
+        if (cUpdate.getUsername() == null) {
+            cUpdate.setUsername(cUsername);
+        }
         return ResponseEntity
                 .status(HttpStatus.NO_CONTENT)
                 .body(cUpdate.getId());
     }
-
 }
