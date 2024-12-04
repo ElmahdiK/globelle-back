@@ -56,7 +56,7 @@ public class AuthService {
         return token;
     }
 
-    public User register(RegisterDto registerDto, int idRole) {
+    public User register(RegisterDto registerDto, String idRole) {
         // Create new user from register DTO
         User user = new User();
         user.setUsername(registerDto.getUsername());
@@ -78,7 +78,7 @@ public class AuthService {
         User savedUser = userDao.save(user);
 
         // Set user role by default
-        Role userRole = roleDao.findByName(idRole==1 ? RoleEnum.PROVIDER.toString() : RoleEnum.CLIENT.toString()).get();
+        Role userRole = roleDao.findByName(idRole.equals("provider") ? RoleEnum.PROVIDER.toString() : RoleEnum.CLIENT.toString()).get();
 
         savedUser.getRoles().add(userRole);
         savedUser = userDao.save(savedUser);

@@ -94,14 +94,14 @@ INSERT INTO beauty_service (id, name, price, category_id, user_id) VALUES
 (11, 'Épilation', '50.00',  2, 13),
 (12, 'Soin', '50.00',  2, 14);
 
-INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (1, 30, 3, '2024-11-29 10:10');
+INSERT INTO reservation (id, client_id, provider_id, reservation_date, beauty_service_id)
+VALUES (1, 30, 3, '2024-11-29 10:10', 1);
 
-INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (2, 31, 4, '2024-11-30 10:15');
+INSERT INTO reservation (id, client_id, provider_id, reservation_date, beauty_service_id)
+VALUES (2, 31, 4, '2024-11-30 10:15', 4);
 
-INSERT INTO reservation (id, client_id, provider_id, reservation_date)
-VALUES (3, 31, 5, '2024-12-01 10:20');
+INSERT INTO reservation (id, client_id, provider_id, reservation_date, beauty_service_id)
+VALUES (3, 31, 5, '2024-12-01 10:20', 1);
 
 INSERT INTO user_role (user_id, role_id) VALUES (3, 1);
 INSERT INTO user_role (user_id, role_id) VALUES (4, 1);

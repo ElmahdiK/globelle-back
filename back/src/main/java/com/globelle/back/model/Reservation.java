@@ -13,9 +13,23 @@ public class Reservation implements Serializable {
     private Integer id;
 
     private String reservationDate;
+//
+//    private Integer clientId;
+//
+//    private Integer providerId;
+//
+//    private Integer beautyServiceId;
 
-    private Integer clientId;
 
-    private Integer providerId;
+    @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false)
+    private User clientId;
 
+    @ManyToOne
+    @JoinColumn(name = "provider_id", referencedColumnName = "id", nullable = false)
+    private User providerId;
+
+    @ManyToOne
+    @JoinColumn(name = "beauty_service_id", referencedColumnName = "id", nullable = false)
+    private BeautyService beautyServiceId;
 }

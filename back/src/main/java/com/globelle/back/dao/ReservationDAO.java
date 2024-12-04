@@ -15,10 +15,10 @@ public interface ReservationDAO extends CrudRepository<Reservation, Integer> {
     @Query(value = "SELECT r.reservation_date FROM reservation r WHERE r.provider_id = :providerId AND r.reservation_date LIKE :reservationDate%", nativeQuery = true)
     List<String> findByProviderIdAndDate(@Param("providerId") int providerId, @Param("reservationDate") String reservationDate);
 
-    @Query(value = "SELECT r.* FROM reservation r WHERE r.provider_id = :userId", nativeQuery = true)
+    @Query(value = "SELECT r.*, b.name, b.price FROM reservation r INNER JOIN beauty_service b ON b.id = r.beauty_service_id WHERE r.provider_id = :userId", nativeQuery = true)
     List<Reservation> findReservationsByProviderId(@Param("userId") int userId);
 
-    @Query(value = "SELECT r.* FROM reservation r WHERE r.client_id = :userId", nativeQuery = true)
+    @Query(value = "SELECT r.*, b.name, b.price FROM reservation r INNER JOIN beauty_service b ON b.id = r.beauty_service_id WHERE r.client_id = :userId", nativeQuery = true)
     List<Reservation> findReservationsByClientId(@Param("userId") int userId);
 
 }

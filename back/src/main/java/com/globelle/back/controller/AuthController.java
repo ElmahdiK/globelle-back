@@ -24,7 +24,7 @@ public class AuthController {
 
     // Build Login REST API
     @PostMapping("/login")
-    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto){
+    public ResponseEntity<AuthResponseDto> login(@RequestBody LoginDto loginDto) {
 
         //01 - Receive the token from AuthService
         String token = authService.login(loginDto);
@@ -39,7 +39,7 @@ public class AuthController {
 
     // Build Register REST API
     @PostMapping("/register/{idRole}")
-    public ResponseEntity<User> register(@RequestBody RegisterDto registerDto, @PathVariable int idRole){
+    public ResponseEntity<User> register(@RequestBody RegisterDto registerDto, @PathVariable String idRole) {
         User user = authService.register(registerDto, idRole);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
