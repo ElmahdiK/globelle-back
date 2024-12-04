@@ -31,15 +31,15 @@ public class ReservationController {
         return r.orElse(null);
     }
 
-    // http://localhost:8080/reservations/users/1
-    @GetMapping("/users/{id}")
-    public List<String> getReservationByUserId(@PathVariable Integer id) throws ResponseStatusException {
-        List<String> r = reservationService.getReservationById(id);
-        if (r.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
-        }
-        return r;
-    }
+//    // http://localhost:8080/reservations/users/1
+//    @GetMapping("/users/{id}")
+//    public List<String> getReservationByUserId(@PathVariable Integer id) throws ResponseStatusException {
+//        List<String> r = reservationService.getReservationById(id);
+//        if (r.isEmpty()) {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found");
+//        }
+//        return r;
+//    }
 
     // Delete + Post + Put
     @DeleteMapping("/{id}")

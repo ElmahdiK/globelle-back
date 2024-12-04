@@ -41,28 +41,28 @@ public class UserController {
     @Autowired
     private ReservationService reservationService;
 
-    // http://localhost:8080/users/1/2/reservations
-    @GetMapping(value = {"/1/{id}/reservations"})
+    // http://localhost:8080/users/provider/2/reservations
+    @GetMapping(value = {"/provider/{id}/reservations"})
     public List<Reservation> getReservationsProviderId(@PathVariable int id) {
         return reservationService.getReservationsByProviderId(id);
     }
 
-    // http://localhost:8080/users/2/1/reservations
-    @GetMapping(value = {"/2/{id}/reservations"})
+    // http://localhost:8080/users/client/1/reservations
+    @GetMapping(value = {"/client/{id}/reservations"})
     public List<Reservation> getReservationsClientId(@PathVariable int id) {
         return reservationService.getReservationsByClientId(id);
     }
 
-    // http://localhost:8080/users/1/1/reservations/date/2024-11-30
-    @GetMapping(value = {"/1/{id}/reservations/date/{date}"})
+    // http://localhost:8080/users/provider/1/reservations/date/2024-11-30
+    @GetMapping(value = {"/provider/{id}/reservations/date/{date}"})
     public List<String> getReservationByProviderIdAndDate(@PathVariable int id, @PathVariable String date) {
         List<String> r = reservationService.getReservationByProviderIdAndDate(id, date);
-        List<String> horaires = new ArrayList<>();
+        List<String> timeSlots = new ArrayList<>();
         System.out.println(r);
         if (!r.isEmpty()) {
-            for (String datetime : r) horaires.add(datetime.split(" ")[1]);
+            for (String datetime : r) timeSlots.add(datetime.split(" ")[1]);
         }
-        return horaires;
+        return timeSlots;
     }
 
     // PARTIE : beautyServiceService
@@ -70,13 +70,13 @@ public class UserController {
     private BeautyServiceService beautyServiceService;
 
     // http://localhost:8080/users/1/search?service=manicure
-    @GetMapping(value = {"1/search"})
+    @GetMapping(value = {"provider/search"})
     public List<User> getProviderByBeautyServicesName(@RequestParam("service") String serviceName) {
         return userService.getUserByBeautyServicesName(serviceName);
     }
 
-    // http://localhost:8080/users/1/1/services
-    @GetMapping(value = {"1/{id}/services", "1/{id}/services/"})
+    // http://localhost:8080/users/provider/1/services
+    @GetMapping(value = {"provider/{id}/services", "provider/{id}/services/"})
     public List<BeautyService> getBeautyServicesByProviderId(@PathVariable Integer id) {
         return beautyServiceService.getAllBeautyServicesByUserId(id);
     }
