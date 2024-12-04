@@ -1,4 +1,5 @@
 package com.globelle.back.config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -35,6 +36,7 @@ public class DataInitializer implements CommandLineRunner {
             }
         }
 
+        /*
         // Create admin user if not exists
         if (userDao.findByUsername("admin").isEmpty()) {
             User admin = new User();
@@ -62,5 +64,6 @@ public class DataInitializer implements CommandLineRunner {
             user.setRoles(Set.of(userRole));
             user = userDao.save(user);
         }
+        */
     }
 }
